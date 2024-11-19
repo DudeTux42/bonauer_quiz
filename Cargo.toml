@@ -1,0 +1,6 @@
+[package]
+name = "bonauer_quiz"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
