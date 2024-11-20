@@ -9,20 +9,20 @@ mod utils;
 
 fn main() {
    loop{ 
-        // Quiz erstellen
+        // create quiz
         let quiz = create_sample_quiz();
 
-        // Kategorien als Liste
+        // category as list
         let categories = vec![
             "Mathematics".to_string(),
             "IT".to_string(),
             "Abbreviations".to_string(),
         ];
 
-        // Benutzer wählt eine Kategorie aus
+        // user chooses a category
         let selected_category = choose_category(categories);
 
-        // Quiz durchführen
+        // start quiz
         println!("You selected the {} category.", selected_category);
 
         let score = quiz.take_quiz(&selected_category);

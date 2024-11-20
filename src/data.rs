@@ -5,7 +5,7 @@ use crate::quiz::Quiz;
 pub fn create_sample_quiz() -> Quiz {
     let mut quiz = Quiz::new();
 
-    // Kategorie: Mathematik
+    // Category: Math
     let mut math_category = Category::new("Mathematics".to_string());
     math_category.add_question(Question::new(
         "What is 2 + 2?".to_string(),
@@ -23,7 +23,7 @@ pub fn create_sample_quiz() -> Quiz {
         1,
     ));
 
-    // Kategorie: IT
+    // Category: IT
     let mut it_category = Category::new("IT".to_string());
     it_category.add_question(Question::new(
         "What does CPU stand for?".to_string(),
@@ -41,7 +41,7 @@ pub fn create_sample_quiz() -> Quiz {
         1,
     ));
 
-    // Kategorie: Abkürzungen
+    // category: abbreviations
     let mut abbreviations_category = Category::new("Abbreviations".to_string());
     abbreviations_category.add_question(Question::new(
         "What does ASAP stand for?".to_string(),
@@ -59,7 +59,7 @@ pub fn create_sample_quiz() -> Quiz {
         0,
     ));
 
-    // Kategorien zum Quiz hinzufügen
+    // add categories to quiz
     quiz.add_category(math_category);
     quiz.add_category(it_category);
     quiz.add_category(abbreviations_category);

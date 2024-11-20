@@ -16,17 +16,17 @@ pub fn choose_category(categories: Vec<String>) -> String {
     }
 
     let mut choice = String::new();
-    io::stdout().flush().unwrap(); // Damit der Benutzer aufgefordert wird
+    io::stdout().flush().unwrap(); 
     io::stdin().read_line(&mut choice).unwrap();
 
-    // Benutzereingabe in eine Zahl umwandeln
+    // convert user input to int
     let choice: usize = choice.trim().parse().unwrap_or(0);
 
-    // Überprüfen, ob die Auswahl gültig ist
+    // check if selection is true
     if choice > 0 && choice <= categories.len() {
         categories[choice - 1].to_string()
     } else {
         println!("Invalid choice, please try again.");
-        choose_category(categories) // Rekursive Wiederholung bei ungültiger Auswahl
+        choose_category(categories) // repeate recursevly if selection is unvalid
     }
 }
