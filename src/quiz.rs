@@ -26,7 +26,12 @@ impl Quiz {
             let mut score = 0;
             for question in &category.questions {
                 println!("{}", question.question_text);
-                for (index, option) in question.options.iter().enumerate() {
+                // Shuffle the options for each question
+                let mut q = question.clone();
+                q.shuffle_options();
+
+                // Display the shuffled options
+                for (index, option) in q.options.iter().enumerate() {
                     println!("{}: {}", index + 1, option);
                 }
 
@@ -34,7 +39,7 @@ impl Quiz {
                 std::io::stdin().read_line(&mut user_answer).unwrap();
                 let user_answer: usize = user_answer.trim().parse().unwrap();
 
-                if question.is_correct(user_answer - 1) {
+                if q.is_correct(user_answer - 1) {
                     score += 1;
                 }
             }
@@ -45,4 +50,5 @@ impl Quiz {
         }
     }
 }
+
 

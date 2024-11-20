@@ -59,6 +59,9 @@ pub fn create_sample_quiz() -> Quiz {
         0,
     ));
 
+    // category IPV4
+    let mut _ipv4_category = Category::new("IPV4".to_string());
+
     // add categories to quiz
     quiz.add_category(math_category);
     quiz.add_category(it_category);

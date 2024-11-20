@@ -17,6 +17,7 @@ fn main() {
             "Mathematics".to_string(),
             "IT".to_string(),
             "Abbreviations".to_string(),
+            "IPV4".to_string(),
         ];
 
         // user chooses a category
