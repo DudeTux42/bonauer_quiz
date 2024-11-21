@@ -60,7 +60,16 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     // category IPV4
-    let mut _ipv4_category = Category::new("IPV4".to_string());
+    let mut ipv4_classes_category = Category::new("IPV4".to_string());
+
+    ipv4_classes_category.add_question(Question::new(
+        "Welche Klasse hat diese IPV4 Adresse: {}".to_string(),
+        vec!["Klasse A".to_string(), "Klasse B".to_string(), "Klasse C".to_string(), "Klasse D".to_string(), "Klasse E".to_string()],
+        0, //TODO: figure out how to handle correct answer
+    ));
+
+
+
 
     // add categories to quiz
     quiz.add_category(math_category);

@@ -1,14 +1,19 @@
 use crate::data::create_sample_quiz;
 use crate::utils::choose_category;
+use crate::ipv4::{create_ipv4, ipv4_range, range_to_str};
 
 mod quiz;
 mod category;
 mod question;
 mod data;
 mod utils;
+mod ipv4;
 
 fn main() {
    loop{ 
+        let ipaddr = create_ipv4();
+        println!("Random IPV4: {:?}", ipaddr);
+        println!("Range: {}", range_to_str(ipv4_range(ipaddr)));
         // create quiz
         let quiz = create_sample_quiz();
 

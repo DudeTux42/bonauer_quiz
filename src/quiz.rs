@@ -1,6 +1,7 @@
 use crate::category::Category;
 use std::collections::HashMap;
 
+
 #[derive(Debug)]
 pub struct Quiz {
     pub categories: HashMap<String, Category>,
@@ -50,5 +51,8 @@ impl Quiz {
         }
     }
 }
+
+
+
 
 
