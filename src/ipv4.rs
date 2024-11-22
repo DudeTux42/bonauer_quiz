@@ -1,6 +1,8 @@
 use rand::Rng;
 use std::net::Ipv4Addr;
 
+use crate::question::Question;
+
 
 
 pub fn create_ipv4() -> Ipv4Addr {
@@ -38,3 +40,27 @@ pub fn range_to_str(class: i8) -> &'static str {
     _ => "Ungültige Klasse"
     }
 }
+ 
+
+pub fn generate_ipv4_question() -> Question {
+    let ipv4 = create_ipv4();
+
+    let correct_answer = ipv4_range(ipv4);
+
+
+    let options = vec![
+        "Klasse A".to_string(),
+        "Klasse B".to_string(),
+        "Klasse C".to_string(),
+        "Klasse D".to_string(),
+        "Klasse E".to_string(),
+    ];
+
+    let question_text = format!("In welche Klasse befindet sich diese IPV4 Addresse: {}", ipv4);
+
+    Question::new(question_text, options, correct_answer as usize )
+
+
+}
+
+

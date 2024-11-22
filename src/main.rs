@@ -11,9 +11,9 @@ mod ipv4;
 
 fn main() {
    loop{ 
-        let ipaddr = create_ipv4();
-        println!("Random IPV4: {:?}", ipaddr);
-        println!("Range: {}", range_to_str(ipv4_range(ipaddr)));
+        // let ipaddr = create_ipv4();
+        // println!("Random IPV4: {:?}", ipaddr);
+        // println!("Range: {}", range_to_str(ipv4_range(ipaddr)));
         // create quiz
         let quiz = create_sample_quiz();
 

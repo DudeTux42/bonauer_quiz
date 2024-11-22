@@ -1,4 +1,5 @@
 use crate::category::Category;
+use crate::ipv4::generate_ipv4_question;
 use crate::question::Question;
 use crate::quiz::Quiz;
 
@@ -23,6 +24,10 @@ pub fn create_sample_quiz() -> Quiz {
         1,
     ));
 
+    
+
+
+
     // Category: IT
     let mut it_category = Category::new("IT".to_string());
     it_category.add_question(Question::new(
@@ -40,6 +45,10 @@ pub fn create_sample_quiz() -> Quiz {
         vec!["Java".to_string(), "JavaScript".to_string(), "C++".to_string()],
         1,
     ));
+
+    
+
+
 
     // category: abbreviations
     let mut abbreviations_category = Category::new("Abbreviations".to_string());
@@ -59,15 +68,16 @@ pub fn create_sample_quiz() -> Quiz {
         0,
     ));
 
+
+
+
     // category IPV4
     let mut ipv4_classes_category = Category::new("IPV4".to_string());
-
-    ipv4_classes_category.add_question(Question::new(
-        "Welche Klasse hat diese IPV4 Adresse: {}".to_string(),
-        vec!["Klasse A".to_string(), "Klasse B".to_string(), "Klasse C".to_string(), "Klasse D".to_string(), "Klasse E".to_string()],
-        0, //TODO: figure out how to handle correct answer
-    ));
-
+    
+    // Create 5 random questions
+    for _ in 0..5 {
+        ipv4_classes_category.add_question(generate_ipv4_question());
+    }
 
 
 
@@ -75,6 +85,7 @@ pub fn create_sample_quiz() -> Quiz {
     quiz.add_category(math_category);
     quiz.add_category(it_category);
     quiz.add_category(abbreviations_category);
+    quiz.add_category(ipv4_classes_category);
 
     quiz
 }
