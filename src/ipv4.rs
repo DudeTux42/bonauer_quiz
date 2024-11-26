@@ -30,7 +30,7 @@ pub fn ipv4_range(ipv4: Ipv4Addr) -> i8 {
 }
 
 
-pub fn range_to_str(class: i8) -> &'static str {
+pub fn _range_to_str(class: i8) -> &'static str {
     match class {
     0 => "Klasse A",
     1 => "Klasse B", 

@@ -4,7 +4,7 @@ use crate::question::Question;
 pub struct Category {
     pub name: String,
     pub questions: Vec<Question>,
-    pub subcategories: Vec<Category>,
+    pub _subcategories: Vec<Category>,
 }
 
 impl Category {
@@ -12,7 +12,7 @@ impl Category {
         Category {
             name,
             questions: Vec::new(),
-            subcategories: Vec::new(),
+            _subcategories: Vec::new(),
 
         }
     }
@@ -21,12 +21,12 @@ impl Category {
         self.questions.push(question);
     }
 
-    pub fn add_subcategory(&mut self, subcategory: Category) {
-        self.subcategories.push(subcategory);
+    pub fn _add_subcategory(&mut self, subcategory: Category) {
+        self._subcategories.push(subcategory);
     }
 
-    pub fn get_subcategory(&self, name: &str) -> Option<&Category> {
-        self.subcategories.iter().find(|sub| sub.name == name)
+    pub fn _get_subcategory(&self, name: &str) -> Option<&Category> {
+        self._subcategories.iter().find(|sub| sub.name == name)
     }
 }
 

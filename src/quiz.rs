@@ -1,4 +1,5 @@
 use crate::category::Category;
+use rand::seq::SliceRandom;
 use std::collections::HashMap;
 
 
@@ -22,54 +23,73 @@ impl Quiz {
         self.categories.get(name)
     }
 
+
     pub fn take_quiz(&self, category_name: &str) -> usize {
-        if let Some(category) = self.get_category(category_name) {
-            let mut score = 0;
-            for question in &category.questions {
-                println!("{}", question.question_text);
-                let mut q = question.clone();
-                q.shuffle_options();
+    if let Some(category) = self.get_category(category_name) {
+        let mut score = 0;
 
-                for (index, option) in q.options.iter().enumerate() {
-                    println!("{}: {}", index + 1, option);
-                }
+        // Zufällige Auswahl von 10 Fragen
+        let mut rng = rand::thread_rng();
+        let questions = &category.questions;
+        let selected_questions: Vec<_> = questions
+            .choose_multiple(&mut rng, 10.min(questions.len())) // Wähle 10 oder weniger Fragen
+            .collect();
 
-                let user_answer: usize = loop {
-                    let mut input = String::new();
-                    std::io::stdin().read_line(&mut input).unwrap();
-                    match input.trim().parse::<usize>() {
-                        Ok(num) if num > 0 && num <= q.options.len() => break num,
-                        _ => println!("Please enter a valid option (1-{})", q.options.len()),
-                    }
-                };
+        for question in selected_questions {
+            println!("{}", question.question_text);
+            let mut q = question.clone();
+            q.shuffle_options();
 
-                if q.is_correct(user_answer - 1) {
-                    score += 1;
-                }
+            for (index, option) in q.options.iter().enumerate() {
+                println!("{}: {}", index + 1, option);
             }
-            score
-        } else {
-            println!("Category not found!");
-            0
+
+            let user_answer: usize = loop {
+                let mut input = String::new();
+                std::io::stdin().read_line(&mut input).unwrap();
+                match input.trim().parse::<usize>() {
+                    Ok(num) if num > 0 && num <= q.options.len() => break num,
+                    _ => println!("Please enter a valid option (1-{})", q.options.len()),
+                }
+            };
+
+            if q.is_correct(user_answer - 1) {
+                    println!("Correct Answer!");
+                score += 1;
+            }
         }
+        score
+    } else {
+        println!("Category not found!");
+        0
     }
+}
+
+
+
+
+
+
     // pub fn take_quiz(&self, category_name: &str) -> usize {
     //     if let Some(category) = self.get_category(category_name) {
     //         let mut score = 0;
     //         for question in &category.questions {
     //             println!("{}", question.question_text);
-    //             // Shuffle the options for each question
     //             let mut q = question.clone();
     //             q.shuffle_options();
     //
-    //             // Display the shuffled options
     //             for (index, option) in q.options.iter().enumerate() {
     //                 println!("{}: {}", index + 1, option);
     //             }
     //
-    //             let mut user_answer = String::new();
-    //             std::io::stdin().read_line(&mut user_answer).unwrap();
-    //             let user_answer: usize = user_answer.trim().parse().unwrap();
+    //             let user_answer: usize = loop {
+    //                 let mut input = String::new();
+    //                 std::io::stdin().read_line(&mut input).unwrap();
+    //                 match input.trim().parse::<usize>() {
+    //                     Ok(num) if num > 0 && num <= q.options.len() => break num,
+    //                     _ => println!("Please enter a valid option (1-{})", q.options.len()),
+    //                 }
+    //             };
     //
     //             if q.is_correct(user_answer - 1) {
     //                 score += 1;

@@ -1,6 +1,5 @@
 use crate::data::create_sample_quiz;
 use crate::utils::choose_category;
-use crate::ipv4::{create_ipv4, ipv4_range, range_to_str};
 
 mod quiz;
 mod category;
