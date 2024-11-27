@@ -63,4 +63,15 @@ pub fn generate_ipv4_question() -> Question {
 
 }
 
-
+pub fn convert_snm(cidr: u8) -> Ipv4Addr {
+    // take xFFFFFFFF and shift bits according to cidr notation
+    let mask = (0xFFFFFFFFu32 << (32 - cidr)) & 0xFFFFFFFF;
+    // Create the windows SNM 
+    let snm = Ipv4Addr::new(
+        ((mask >> 24) & 0xFF) as u8, 
+        ((mask >> 16) & 0xFF) as u8, 
+        ((mask >> 8) & 0xFF) as u8, 
+        (mask & 0xFF) as u8,
+    );
+    snm
+}
