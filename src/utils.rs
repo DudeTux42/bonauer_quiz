@@ -1,12 +1,12 @@
 use std::io::{self, Write};
 
-// pub fn read_input(prompt: &str) -> String {
-//     print!("{}", prompt);
-//     io::stdout().flush().unwrap();
-//     let mut input = String::new();
-//     io::stdin().read_line(&mut input).unwrap();
-//     input.trim().to_string()
-// }
+pub fn read_input(prompt: &str) -> String {
+    print!("{}", prompt);
+    io::stdout().flush().unwrap();
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    input.trim().to_string()
+}
 
 pub fn choose_category(categories: Vec<String>) -> String {
     println!("Please choose a category by entering the corresponding number:");

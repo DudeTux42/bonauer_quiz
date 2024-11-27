@@ -1,5 +1,7 @@
+use ipv4::convert_snm;
+
 use crate::data::create_sample_quiz;
-use crate::utils::choose_category;
+use crate::utils::{choose_category, read_input};
 
 mod quiz;
 mod category;
@@ -14,6 +16,16 @@ fn main() {
         // println!("Random IPV4: {:?}", ipaddr);
         // println!("Range: {}", range_to_str(ipv4_range(ipaddr)));
         // create quiz
+        let cidr_input = read_input("Enter a value 1..32 as CIDR SNM: ");
+        let cidr: u8 = match cidr_input.trim().parse() {
+            Ok(num) if num >= 1 && num <= 32 => num,
+            _ => {
+                println!("Invalid input. Please enter a number between 1 and 32.");
+                continue; // Startet die Schleife neu, wenn die Eingabe ungültig ist
+            }
+        };
+        let snm = convert_snm(cidr);
+        println!("The win SNM of /{} is {}", cidr, snm );
         let quiz = create_sample_quiz();
 
         // category as list

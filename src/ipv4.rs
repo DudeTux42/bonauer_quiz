@@ -75,3 +75,20 @@ pub fn convert_snm(cidr: u8) -> Ipv4Addr {
     );
     snm
 }
+
+pub fn create_ipv4_and_snm() -> (Ipv4Addr, u8) {
+    let mut rng = rand::thread_rng();
+
+
+    let ip = Ipv4Addr::new(
+        rng.gen_range(1..=223), 
+        rng.gen_range(0..=255), 
+        rng.gen_range(0..=255), 
+        rng.gen_range(1..=254)
+    );
+
+    let snm = rng.gen_range(8..=30);
+
+    (ip, snm)
+
+}
