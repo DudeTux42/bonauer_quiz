@@ -1,4 +1,4 @@
-use ipv4::convert_snm;
+use ipv4::{calculate_network_id, convert_snm, create_ipv4_and_snm};
 
 use crate::data::create_sample_quiz;
 use crate::utils::{choose_category, read_input};
@@ -26,6 +26,13 @@ fn main() {
         };
         let snm = convert_snm(cidr);
         println!("The win SNM of /{} is {}", cidr, snm );
+        let (ip, prefix) = create_ipv4_and_snm();
+        println!("Genarated IP: {}, SNM: {}", ip, prefix);
+        let net_id = calculate_network_id(ip, prefix);
+        println!("Network ID: {}", net_id);
+
+
+
         let quiz = create_sample_quiz();
 
         // category as list

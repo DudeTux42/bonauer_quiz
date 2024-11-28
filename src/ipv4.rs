@@ -92,3 +92,14 @@ pub fn create_ipv4_and_snm() -> (Ipv4Addr, u8) {
     (ip, snm)
 
 }
+
+
+pub fn calculate_network_id(ip: Ipv4Addr, prefix: u8) -> Ipv4Addr {
+    let mask = (0xFFFFFFFFu32 << (32 - prefix)) & 0xFFFFFFFF;
+
+    let ip_u32: u32 = ip.into();
+
+    let network_id_u32 = ip_u32 & mask;
+
+    Ipv4Addr::from(network_id_u32)
+}

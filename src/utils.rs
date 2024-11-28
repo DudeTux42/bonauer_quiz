@@ -30,3 +30,49 @@ pub fn choose_category(categories: Vec<String>) -> String {
         choose_category(categories) // repeate recursevly if selection is unvalid
     }
 }
+
+
+pub fn first_and_last_three(vec: &[i32]) -> Vec<i32> {
+    let mut result = Vec::new();
+
+    result.extend_from_slice(&vec[0..std::cmp::min(3, vec.len())]);
+
+    result.extend_from_slice(&vec[vec.len().saturating_sub(3)..]);
+
+    result
+}
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*; // Import the function to be tested
+
+    #[test]
+    fn test_first_and_last_three() {
+        // Test case with more than 3 elements
+        let vec = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let result = first_and_last_three(&vec);
+        assert_eq!(result, vec![1, 2, 3, 7, 8, 9]);
+
+        // Test case with exactly 3 elements
+        let vec = vec![1, 2, 3];
+        let result = first_and_last_three(&vec);
+        assert_eq!(result, vec![1, 2, 3, 1, 2, 3]);
+
+        // Test case with fewer than 3 elements
+        let vec = vec![1, 2];
+        let result = first_and_last_three(&vec);
+        assert_eq!(result, vec![1, 2, 1, 2]);
+
+        // Test case with an empty vector
+        let vec: Vec<i32> = vec![];
+        let result = first_and_last_three(&vec);
+        assert_eq!(result, vec![]);
+
+        // Test case with a single element
+        let vec = vec![42];
+        let result = first_and_last_three(&vec);
+        assert_eq!(result, vec![42, 42]);
+    }
+}
