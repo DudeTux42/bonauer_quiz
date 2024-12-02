@@ -1,5 +1,4 @@
-use ipv4::{calculate_network_id, convert_snm, create_ipv4_and_snm};
-
+use ipv4::{calculate_network_id, convert_snm, create_ipv4_and_snm, available_networks};
 use crate::data::create_sample_quiz;
 use crate::utils::{choose_category, read_input};
 
@@ -30,6 +29,7 @@ fn main() {
         println!("Genarated IP: {}, SNM: {}", ip, prefix);
         let net_id = calculate_network_id(ip, prefix);
         println!("Network ID: {}", net_id);
+        println!("{} available networks for {}/{}",available_networks(ip, prefix), ip, prefix);
 
 
 

@@ -23,7 +23,7 @@ impl Quiz {
         self.categories.get(name)
     }
 
-
+    // a function to create a quiz
     pub fn take_quiz(&self, category_name: &str) -> usize {
     if let Some(category) = self.get_category(category_name) {
         let mut score = 0;
@@ -34,7 +34,7 @@ impl Quiz {
         let selected_questions: Vec<_> = questions
             .choose_multiple(&mut rng, 10.min(questions.len())) // Wähle 10 oder weniger Fragen
             .collect();
-
+        // for loop to iterate over the selected questions and display them
         for question in selected_questions {
             println!("{}", question.question_text);
             let mut q = question.clone();

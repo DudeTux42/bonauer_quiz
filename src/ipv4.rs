@@ -1,10 +1,9 @@
 use rand::Rng;
 use std::net::Ipv4Addr;
-
 use crate::question::Question;
 
 
-
+// A function that creates a random IPv4 address
 pub fn create_ipv4() -> Ipv4Addr {
     let mut rng = rand::thread_rng();
     let ipv4 = Ipv4Addr::new(
@@ -16,7 +15,7 @@ pub fn create_ipv4() -> Ipv4Addr {
     ipv4    
 }
 
-
+// A function that determines the class of an IPv4 address
 pub fn ipv4_range(ipv4: Ipv4Addr) -> i8 {
     let first_octet = ipv4.octets()[0];
 
@@ -29,7 +28,7 @@ pub fn ipv4_range(ipv4: Ipv4Addr) -> i8 {
     }
 }
 
-
+// A function that converts the class of an IPv4 address to a string
 pub fn _range_to_str(class: i8) -> &'static str {
     match class {
     0 => "Klasse A",
@@ -41,7 +40,7 @@ pub fn _range_to_str(class: i8) -> &'static str {
     }
 }
  
-
+// A function that generates a question about the class of an IPv4 address
 pub fn generate_ipv4_question() -> Question {
     let ipv4 = create_ipv4();
 
@@ -62,7 +61,7 @@ pub fn generate_ipv4_question() -> Question {
 
 
 }
-
+// A function that converts CIDR notation to a subnet mask
 pub fn convert_snm(cidr: u8) -> Ipv4Addr {
     // take xFFFFFFFF and shift bits according to cidr notation
     let mask = (0xFFFFFFFFu32 << (32 - cidr)) & 0xFFFFFFFF;
@@ -75,7 +74,7 @@ pub fn convert_snm(cidr: u8) -> Ipv4Addr {
     );
     snm
 }
-
+// A function that creates a random IP and SNM
 pub fn create_ipv4_and_snm() -> (Ipv4Addr, u8) {
     let mut rng = rand::thread_rng();
 
@@ -93,7 +92,7 @@ pub fn create_ipv4_and_snm() -> (Ipv4Addr, u8) {
 
 }
 
-
+// A function that calculates the network ID
 pub fn calculate_network_id(ip: Ipv4Addr, prefix: u8) -> Ipv4Addr {
     let mask = (0xFFFFFFFFu32 << (32 - prefix)) & 0xFFFFFFFF;
 
@@ -102,4 +101,37 @@ pub fn calculate_network_id(ip: Ipv4Addr, prefix: u8) -> Ipv4Addr {
     let network_id_u32 = ip_u32 & mask;
 
     Ipv4Addr::from(network_id_u32)
+}
+// A function that gives out the number of available networks
+pub fn available_networks(ip: Ipv4Addr, prefix: u8) -> u32 {
+    let available_networks = 2u32.pow((32 - prefix).into()) - 2;
+
+    available_networks
+}
+
+// A funcion that gives out the octet that needs to be changed for subnetting
+pub fn actionbyte(snm: Ipv4Addr) -> u8 {
+    let snm = snm.octets();
+    let mut actionbyte = 0;
+    for octet in snm.iter() {
+        if *octet != 255 {
+            break;
+        }
+        actionbyte += 1;
+    }
+    actionbyte
+}
+
+// A function that gives out the number of subnets that can be created
+pub fn available_subnets(snm: Ipv4Addr) -> u32 {
+    let actionbyte = actionbyte(snm);
+    let available_subnets = 2u32.pow((8 - actionbyte).into()) - 2;
+    available_subnets
+}
+
+// A funcion calculates the subnet increment
+pub fn subnet_increment(snm: Ipv4Addr) -> u32 {
+    let actionbyte = actionbyte(snm);
+    let subnet_increment = 2u32.pow((8 - actionbyte).into());
+    subnet_increment
 }

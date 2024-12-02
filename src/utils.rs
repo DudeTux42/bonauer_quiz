@@ -1,5 +1,5 @@
 use std::io::{self, Write};
-
+// function to read input from the user
 pub fn read_input(prompt: &str) -> String {
     print!("{}", prompt);
     io::stdout().flush().unwrap();
@@ -7,7 +7,7 @@ pub fn read_input(prompt: &str) -> String {
     io::stdin().read_line(&mut input).unwrap();
     input.trim().to_string()
 }
-
+// a function for choosing a category
 pub fn choose_category(categories: Vec<String>) -> String {
     println!("Please choose a category by entering the corresponding number:");
 
@@ -31,7 +31,7 @@ pub fn choose_category(categories: Vec<String>) -> String {
     }
 }
 
-
+// a function that returns the first three and last three elements of a vector
 pub fn first_and_last_three(vec: &[i32]) -> Vec<i32> {
     let mut result = Vec::new();
 
