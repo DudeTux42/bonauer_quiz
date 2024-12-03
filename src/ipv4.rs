@@ -162,4 +162,3 @@ pub fn generate_subnetting_question_calculate_new_snm() -> Question {
     Question::new(question_text, options, correct_answer as usize)
 }
 
-//testcommit
