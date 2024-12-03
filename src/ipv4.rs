@@ -135,3 +135,15 @@ pub fn subnet_increment(snm: Ipv4Addr) -> u32 {
     let subnet_increment = 2u32.pow((8 - actionbyte).into());
     subnet_increment
 }
+
+
+// A function that takes an ip and cidr snm and a number of subnets and returns the new snm in cidr
+// notation
+pub fn new_snm(ip: Ipv4Addr, prefix: u8, subnets: u32) -> u8 {
+    let available_subnets = available_subnets(ip);
+    let subnet_increment = subnet_increment(ip);
+    let new_prefix = prefix + (32 - prefix).saturating_sub(subnets.trailing_zeros());
+    new_prefix
+}
+
+// 
