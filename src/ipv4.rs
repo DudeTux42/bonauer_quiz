@@ -161,3 +161,5 @@ pub fn generate_subnetting_question_calculate_new_snm() -> Question {
     let question_text = format!("Gegeben ist die IP-Adresse {} mit der Subnetzmaske {}. Wie viele Subnetze können erstellt werden und wie lautet die neue Subnetzmaske in CIDR-Notation?", ip, prefix);
     Question::new(question_text, options, correct_answer as usize)
 }
+
+//testcommit
