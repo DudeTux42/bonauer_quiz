@@ -146,4 +146,18 @@ pub fn new_snm(ip: Ipv4Addr, prefix: u8, subnets: u32) -> u8 {
     new_prefix
 }
 
-// 
+// Function that generates a question for a subnetting quiz
+pub fn generate_subnetting_question_calculate_new_snm() -> Question {
+    let (ip, prefix) = create_ipv4_and_snm();
+    let subnets = available_subnets(ip);
+    let new_prefix = new_snm(ip, prefix, subnets);
+    let correct_answer = new_prefix;
+    let options = vec![
+        "8".to_string(),
+        "16".to_string(),
+        "24".to_string(),
+        "32".to_string(),
+    ];
+    let question_text = format!("Gegeben ist die IP-Adresse {} mit der Subnetzmaske {}. Wie viele Subnetze können erstellt werden und wie lautet die neue Subnetzmaske in CIDR-Notation?", ip, prefix);
+    Question::new(question_text, options, correct_answer as usize)
+}
