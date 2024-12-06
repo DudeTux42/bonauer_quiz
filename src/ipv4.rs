@@ -215,3 +215,6 @@ fn generate_incorrect_snm(correct_snm: u8) -> Vec<u8> {
 
     incorrect_snms
 }
+
+// Function that generates a question for getting the actionbyte
+// TODO: Implement this function
