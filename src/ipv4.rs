@@ -162,3 +162,56 @@ pub fn generate_subnetting_question_calculate_new_snm() -> Question {
     Question::new(question_text, options, correct_answer as usize)
 }
 
+
+// Function hat returns Broadcast Address of a given IP and SNM
+pub fn calculate_broadcast_address(ip: Ipv4Addr, prefix: u8) -> Ipv4Addr {
+    let mask = (0xFFFFFFFFu32 << (32 - prefix)) & 0xFFFFFFFF;
+    let ip_u32: u32 = ip.into();
+    let broadcast_address_u32 = ip_u32 | !mask;
+    Ipv4Addr::from(broadcast_address_u32)
+}
+
+
+// Function that generates a question for a subnetting quiz
+fn generate_subnet_snm_question() -> Question {
+    let correct_snm = generate_valid_snm();
+    let incorrect_snms = generate_incorrect_snm(correct_snm);
+
+    let mut options = vec![
+        format!("/{}", correct_snm),
+        format!("/{}", incorrect_snms[0]),
+        format!("/{}", incorrect_snms[1]),
+        format!("/{}", incorrect_snms[2]),
+    ];
+
+    options.shuffle(&mut rand::thread_rng());
+
+    let correct_answer_idx = options.iter().position(|x| x == &format!("/{}", correct_snm)).unwrap();
+
+    Question::new(
+        "What is the subnet mask?".to_string(),
+        options,
+        correct_answer_idx,
+    )
+}
+
+fn generate_valid_snm() -> u8 {
+    let mut rng = rand::thread_rng();
+    let cidr = rng.gen_range(8..=30);
+    convert_snm(cidr)
+}
+
+fn generate_incorrect_snm(correct_snm: u8) -> Vec<u8> {
+    let mut rng = rand::thread_rng();
+    let mut incorrect_snms = Vec::new();
+
+    while incorrect_snms.len() < 3 {
+        let cidr = rng.gen_range(8..=30);
+        let incorrect_snm = convert_snm(cidr);
+        if incorrect_snm != correct_snm && !incorrect_snms.contains(&incorrect_snm) {
+            incorrect_snms.push(incorrect_snm);
+        }
+    }
+
+    incorrect_snms
+}
