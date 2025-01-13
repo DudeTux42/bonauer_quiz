@@ -1,6 +1,6 @@
 use crate::question::Question;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Category {
     pub name: String,
     pub questions: Vec<Question>,

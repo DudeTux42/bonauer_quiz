@@ -1,18 +1,22 @@
 use eframe::egui;
 
 mod gui;
+mod data;
+mod category;
+mod question;
+mod ipv4;
+mod utils;
+mod quiz;
+
 
 fn main() {
     let options = eframe::NativeOptions::default();
-    eframe::run_native(
+    let _ = eframe::run_native(
         "Bonauer Quiz GUI",
         options,
-        Box::new(|_cc| Box::new(gui::MyApp::default())),
+        Box::new(|_cc| Ok(Box::new(gui::MyApp::default()))),
     );
 }
-
-
-
 
 
 

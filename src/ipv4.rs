@@ -1,4 +1,5 @@
 use rand::Rng;
+use rand::seq::SliceRandom;
 use std::net::Ipv4Addr;
 use crate::question::Question;
 
@@ -103,7 +104,7 @@ pub fn calculate_network_id(ip: Ipv4Addr, prefix: u8) -> Ipv4Addr {
     Ipv4Addr::from(network_id_u32)
 }
 // A function that gives out the number of available networks
-pub fn available_networks(ip: Ipv4Addr, prefix: u8) -> u32 {
+pub fn available_networks(_ip: Ipv4Addr, prefix: u8) -> u32 {
     let available_networks = 2u32.pow((32 - prefix).into()) - 2;
 
     available_networks
@@ -140,9 +141,9 @@ pub fn subnet_increment(snm: Ipv4Addr) -> u32 {
 // A function that takes an ip and cidr snm and a number of subnets and returns the new snm in cidr
 // notation
 pub fn new_snm(ip: Ipv4Addr, prefix: u8, subnets: u32) -> u8 {
-    let available_subnets = available_subnets(ip);
-    let subnet_increment = subnet_increment(ip);
-    let new_prefix = prefix + (32 - prefix).saturating_sub(subnets.trailing_zeros());
+    let _available_subnets = available_subnets(ip);
+    let _subnet_increment = subnet_increment(ip);
+    let new_prefix = prefix + (32 - prefix).saturating_sub(subnets.trailing_zeros() as u8);
     new_prefix
 }
 
@@ -173,7 +174,7 @@ pub fn calculate_broadcast_address(ip: Ipv4Addr, prefix: u8) -> Ipv4Addr {
 
 
 // Function that generates a question for a subnetting quiz
-fn generate_subnet_snm_question() -> Question {
+pub fn generate_subnet_snm_question() -> Question {
     let correct_snm = generate_valid_snm();
     let incorrect_snms = generate_incorrect_snm(correct_snm);
 
@@ -195,13 +196,13 @@ fn generate_subnet_snm_question() -> Question {
     )
 }
 
-fn generate_valid_snm() -> u8 {
+pub fn generate_valid_snm() -> Ipv4Addr {
     let mut rng = rand::thread_rng();
     let cidr = rng.gen_range(8..=30);
     convert_snm(cidr)
 }
 
-fn generate_incorrect_snm(correct_snm: u8) -> Vec<u8> {
+pub fn generate_incorrect_snm(correct_snm: Ipv4Addr ) -> Vec<Ipv4Addr> {
     let mut rng = rand::thread_rng();
     let mut incorrect_snms = Vec::new();
 
