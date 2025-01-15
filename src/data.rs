@@ -1534,7 +1534,7 @@ pub fn create_sample_quiz() -> Quiz {
 
 
     it_category.add_question(Question::new(
-        "Which routing protocol is used in most modern internet routing?", 
+        "Which routing protocol is used in most modern internet routing?".to_string(), 
         vec![
             "BGP".to_string(), // Correct
             "RIP".to_string(), // Hard false
@@ -1545,7 +1545,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "What does the term 'dynamic routing' refer to?", 
+        "What does the term 'dynamic routing' refer to?".to_string(), 
         vec![
             "Routes that are automatically updated and maintained by routers".to_string(), // Correct
             "Manually configured routes that don't change".to_string(), // Hard false
@@ -1556,7 +1556,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which protocol is mainly used for routing within a single autonomous system?", 
+        "Which protocol is mainly used for routing within a single autonomous system?".to_string(), 
         vec![
             "OSPF".to_string(), // Correct
             "BGP".to_string(), // Hard false
@@ -1567,7 +1567,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which of the following devices is responsible for directing traffic within a local network?", 
+        "Which of the following devices is responsible for directing traffic within a local network?".to_string(), 
         vec![
             "Router".to_string(), // Correct
             "Switch".to_string(), // Hard false
@@ -1578,7 +1578,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which routing protocol uses a distance-vector method?", 
+        "Which routing protocol uses a distance-vector method?".to_string(), 
         vec![
             "RIP".to_string(), // Correct
             "OSPF".to_string(), // Hard false
@@ -1589,7 +1589,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "What does BGP stand for?", 
+        "What does BGP stand for?".to_string(), 
         vec![
             "Border Gateway Protocol".to_string(), // Correct
             "Binary Gateway Protocol".to_string(), // Hard false
@@ -1600,7 +1600,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "What is the main role of a default gateway in a network?", 
+        "What is the main role of a default gateway in a network?".to_string(), 
         vec![
             "To route traffic between different networks".to_string(), // Correct
             "To connect devices within a local network".to_string(), // Hard false
@@ -1611,7 +1611,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which protocol is used for routing between different autonomous systems?", 
+        "Which protocol is used for routing between different autonomous systems?".to_string(), 
         vec![
             "BGP".to_string(), // Correct
             "RIP".to_string(), // Hard false
@@ -1622,7 +1622,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which type of routing protocol is OSPF?", 
+        "Which type of routing protocol is OSPF?".to_string(), 
         vec![
             "Link-State".to_string(), // Correct
             "Distance-Vector".to_string(), // Hard false
@@ -1633,7 +1633,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "What is the primary advantage of using OSPF over RIP?", 
+        "What is the primary advantage of using OSPF over RIP?".to_string(), 
         vec![
             "Faster convergence time".to_string(), // Correct
             "More secure communication".to_string(), // Hard false
@@ -1644,7 +1644,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which of the following is true about the routing protocol RIP?", 
+        "Which of the following is true about the routing protocol RIP?".to_string(), 
         vec![
             "It uses hop count as a metric".to_string(), // Correct
             "It uses bandwidth as a metric".to_string(), // Hard false
@@ -1655,7 +1655,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which router protocol is considered more efficient for large-scale networks?", 
+        "Which router protocol is considered more efficient for large-scale networks?".to_string(), 
         vec![
             "OSPF".to_string(), // Correct
             "RIP".to_string(), // Hard false
@@ -1666,7 +1666,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which of the following is a key feature of EIGRP?", 
+        "Which of the following is a key feature of EIGRP?".to_string(), 
         vec![
             "It uses Diffusing Update Algorithm (DUAL)".to_string(), // Correct
             "It uses link-state information".to_string(), // Hard false
@@ -1677,7 +1677,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "What is the primary difference between static and dynamic routing?", 
+        "What is the primary difference between static and dynamic routing?".to_string(), 
         vec![
             "Static routing requires manual configuration, dynamic routing adapts automatically".to_string(), // Correct
             "Static routing is more secure than dynamic routing".to_string(), // Hard false
@@ -1688,7 +1688,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which of the following is the main function of a routing table?", 
+        "Which of the following is the main function of a routing table?".to_string(), 
         vec![
             "To store the best paths to destination networks".to_string(), // Correct
             "To filter incoming and outgoing network traffic".to_string(), // Hard false
