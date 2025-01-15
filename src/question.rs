@@ -5,6 +5,7 @@ pub struct Question {
     pub question_text: String,
     pub options: Vec<String>,
     pub correct_answer: usize, // This will hold the index of the correct option in the shuffled list
+    pub options_shuffled: bool,
 }
 
 impl Question {
@@ -13,6 +14,7 @@ impl Question {
             question_text,
             options,
             correct_answer,
+            options_shuffled: false,
         }
     }
 
@@ -23,6 +25,7 @@ impl Question {
         // Shuffle the options
         let mut rng = rand::thread_rng();
         self.options.shuffle(&mut rng);
+        self.options_shuffled = true;
 
         // Find the new index of the correct answer
         self.correct_answer = self.options.iter().position(|x| x == &correct_option).unwrap();
