@@ -48,15 +48,23 @@ impl MyApp {
         ui.heading("Bonauer Quiz");
         ui.label("Select a game mode:");
 
-        for category in &self.categories {
-            if ui.button(&category.name).clicked() {
-                self.selected_category = Some(category.clone());
-                self.current_questions = self.quiz.initialize_questions(&category.name);
-                self.current_question_index = 0;
-                self.score = 0;
-                self.last_guess_time = None; // Reset guess timer
+        ui.vertical_centered(|ui| {
+            for category in &self.categories {
+                let button = egui::Button::new(
+                    egui::RichText::new(&category.name).size(20.0), // Font size for the buttons
+                )
+                    .fill(egui::Color32::from_rgb(40, 40, 40)) // Button background color
+                    .min_size(egui::Vec2::new(ui.available_width(), 40.0)); // Full width and height
+
+                if ui.add(button).clicked() {
+                    self.selected_category = Some(category.clone());
+                    self.current_questions = self.quiz.initialize_questions(&category.name);
+                    self.current_question_index = 0;
+                    self.score = 0;
+                }
+                ui.add_space(10.0); // Add spacing between buttons
             }
-        }
+        });
     }
 
     fn show_quiz(&mut self, ui: &mut egui::Ui, category: &Category) {
@@ -128,24 +136,44 @@ impl MyApp {
                     self.last_guess_time = None; // Reset the timer
                 }
             });
+
+            // Request a repaint to ensure the UI is updated regularly
+            ui.ctx().request_repaint();
         } else {
             // Quiz completed screen
             ui.label(
                 egui::RichText::new(format!("Quiz completed! Your score: {}", self.score))
                     .size(20.0), // Font size for the completion message
             );
-            if ui.button(
-                egui::RichText::new("Back to Main Menu").size(18.0), // Font size for the button
-            )
-            .clicked()
-            {
-                // Reset quiz state
-                self.selected_category = None;
-                self.current_questions.clear();
-                self.current_question_index = 0;
-                self.score = 0;
-                self.last_guess_time = None;
-            }
+
+            ui.horizontal(|ui| {
+                if ui.button(
+                    egui::RichText::new("Restart Quiz").size(18.0), // Font size for the button
+                )
+                .clicked()
+                {
+                    // Restart the quiz with a new set of questions
+                    self.current_questions = self.quiz.initialize_questions(&category.name);
+                    self.current_question_index = 0;
+                    self.score = 0;
+                    self.last_guess_time = None;
+                }
+
+                ui.add_space(20.0); // Add space between buttons
+
+                if ui.button(
+                    egui::RichText::new("Back to Main Menu").size(18.0), // Font size for the button
+                )
+                .clicked()
+                {
+                    // Reset quiz state
+                    self.selected_category = None;
+                    self.current_questions.clear();
+                    self.current_question_index = 0;
+                    self.score = 0;
+                    self.last_guess_time = None;
+                }
+            });
         }
     }
 }
