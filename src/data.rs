@@ -181,28 +181,6 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "‘Xoom’ is the name of the tablet developed by which company?".to_string(),
-        vec![
-            "Motorola".to_string(), // Correct
-            "Samsung".to_string(), // Hard false
-            "Sony".to_string(), // Hard false
-            "Lenovo".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-    it_category.add_question(Question::new(
-        "‘WIT’ is the NASDAQ code of which Indian IT company?".to_string(),
-        vec![
-            "Wipro".to_string(), // Correct
-            "TCS".to_string(), // Hard false
-            "Infosys".to_string(), // Hard false
-            "HCL".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-    it_category.add_question(Question::new(
         "Expand HDMI".to_string(),
         vec![
             "High Definition Multimedia Interface".to_string(), // Correct
@@ -238,12 +216,12 @@ pub fn create_sample_quiz() -> Quiz {
     it_category.add_question(Question::new(
         "Which method is used to connect to a remote computer?".to_string(),
         vec![
-            "Dialup".to_string(), // Correct
-            "ISDN".to_string(), // Hard false
-            "Broadband".to_string(), // Hard false
-            "Fiber Optics".to_string(), // Hard false
+            "VPN".to_string(),          // Plausible but incorrect
+            "Telnet".to_string(),       // Outdated and insecure
+            "File Transfer Protocol".to_string(), // Incorrect usage
+            "Remote Desktop Protocol".to_string(), // Correct
         ],
-        0,
+        3,
     ));
 
     it_category.add_question(Question::new(
@@ -371,21 +349,10 @@ pub fn create_sample_quiz() -> Quiz {
 
 
     it_category.add_question(Question::new(
-        "Groupon was rebranded in India to what name?".to_string(),
-        vec![
-            "Nearbuy".to_string(), // Correct
-            "Snapdeal".to_string(), // Hard false
-            "Flipkart".to_string(), // Hard false
-            "ShopClues".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-    it_category.add_question(Question::new(
         "Which system software does the job of merging the records from two files to one?".to_string(),
         vec![
-            "Utility Program".to_string(), // Correct
-            "Database Software".to_string(), // Hard false
+            "Database Mangement System (DBMS)".to_string(), // Correct
+            "Integrated Development Environment".to_string(), // Hard false
             "File Manager".to_string(), // Hard false
             "Compiler".to_string(), // Hard false
         ],
@@ -581,18 +548,6 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which social media allows a user to create a map of exactly where a photo was taken?".to_string(),
-        vec![
-            "Flickr".to_string(), // Correct
-            "Instagram".to_string(), // Hard false
-            "Snapchat".to_string(), // Hard false
-            "Pinterest".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-
-    it_category.add_question(Question::new(
         "What type of audience are primarily in a social network?".to_string(),
         vec![
             "Joiners".to_string(), // Correct
@@ -617,8 +572,8 @@ pub fn create_sample_quiz() -> Quiz {
     it_category.add_question(Question::new(
         "What is the character limit for a tweet in Twitter?".to_string(),
         vec![
-            "140".to_string(), // Correct
-            "280".to_string(), // Hard false
+            "280".to_string(), // Correct 
+            "140".to_string(), // Hard false
             "160".to_string(), // Hard false
             "200".to_string(), // Hard false
         ],
@@ -637,34 +592,12 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which social network does not have followers?".to_string(),
-        vec![
-            "Google Plus".to_string(), // Correct
-            "Facebook".to_string(), // Hard false
-            "Twitter".to_string(), // Hard false
-            "LinkedIn".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-    it_category.add_question(Question::new(
         "When did social networking first become popular online?".to_string(),
         vec![
             "2003".to_string(), // Correct
             "2005".to_string(), // Hard false
             "2000".to_string(), // Hard false
             "1999".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-    it_category.add_question(Question::new(
-        "Which is used to search and browse for information online?".to_string(),
-        vec![
-            "Netscape".to_string(), // Correct
-            "Internet Explorer".to_string(), // Hard false
-            "Google Chrome".to_string(), // Hard false
-            "Opera".to_string(), // Hard false
         ],
         0,
     ));
@@ -748,7 +681,7 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Who invented Compact Disc?".to_string(),
+        "Who invented Optical Disc Media?".to_string(),
         vec![
             "James Russel".to_string(), // Correct
             "Philips".to_string(), // Hard false
@@ -870,12 +803,12 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Which computer language is used on the Internet?".to_string(),
+        "Which JavaScript framework is most commonly used for modern web development?".to_string(),
         vec![
-            "Java".to_string(), // Correct
-            "HTML".to_string(), // Hard false
-            "C#".to_string(), // Hard false
-            "PHP".to_string(), // Hard false
+            "React".to_string(),    // Correct
+            "Svelte".to_string(),   // Modern, but less common
+            "Ember.js".to_string(), // Still used, but outdated compared to React
+            "Backbone.js".to_string(), // Very outdated, not commonly used anymore
         ],
         0,
     ));
@@ -910,7 +843,7 @@ pub fn create_sample_quiz() -> Quiz {
             "LISP".to_string(), // Hard false
             "Java".to_string(), // Hard false
         ],
-        0,
+        1,
     ));
 
     it_category.add_question(Question::new(
@@ -926,23 +859,23 @@ pub fn create_sample_quiz() -> Quiz {
 
 
     it_category.add_question(Question::new(
-        "A systems programming language for microcomputers in the Intel family is called?".to_string(),
+        "Which systems programming environment is commonly used for microcontrollers like ESP32?".to_string(),
         vec![
-            "PC/M".to_string(), // Correct
-            "MS/DOS".to_string(), // Hard false
-            "Assembly".to_string(), // Hard false
-            "C".to_string(), // Hard false
+            "C++".to_string(),   // Correct
+            "Python".to_string(), // Plausible, used for simpler applications
+            "JavaScript".to_string(), // Used with frameworks like NodeMCU for microcontrollers
+            "Rust".to_string(),  // Increasingly popular, but less common than C++ for embedded systems
         ],
         0,
     ));
 
     it_category.add_question(Question::new(
-        "Which language is more suited to a structured program?".to_string(),
+        "Which programming language is known for supporting structured programming with modern features?".to_string(),
         vec![
-            "PASCAL".to_string(), // Correct
-            "FORTRAN".to_string(), // Hard false
-            "C".to_string(), // Hard false
-            "Assembly".to_string(), // Hard false
+            "Rust".to_string(),      // Correct
+            "C".to_string(),         // Plausible, classic for structured programming
+            "Python".to_string(),    // Plausible, supports structured programming
+            "JavaScript".to_string(),// Plausible, used in structured codebases
         ],
         0,
     ));
@@ -981,17 +914,6 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Who is the new CEO of Flipkart.com?".to_string(),
-        vec![
-            "Kalyan Krishnamoorthy".to_string(), // Correct
-            "Binny Bansal".to_string(), // Hard false
-            "Sachin Bansal".to_string(), // Hard false
-            "Ravi Subramanian".to_string(), // Hard false
-        ],
-        0,
-    ));
-
-    it_category.add_question(Question::new(
         "Which country recently shut down the use of FM Radio?".to_string(),
         vec![
             "Norway".to_string(), // Correct
@@ -1003,39 +925,778 @@ pub fn create_sample_quiz() -> Quiz {
     ));
 
     it_category.add_question(Question::new(
-        "Who is the newly elected Vice-Chancellor of Nalanda University?".to_string(),
+        "What does OSI stand for?".to_string(),
         vec![
-            "Dr. Vijay Bhatkar".to_string(), // Correct
-            "Amartya Sen".to_string(), // Hard false
-            "Raghuram Rajan".to_string(), // Hard false
-            "S. Jaishankar".to_string(), // Hard false
+            "Open Systems Interconnection (Layer 7)".to_string(), // Correct
+            "Open Source Interface (Layer 7)".to_string(), // Hard false
+            "Online Systems Integration (Layer 7)".to_string(), // Hard false
+            "Open Secure Interface (Layer 7)".to_string(), // Hard false
         ],
         0,
     ));
 
     it_category.add_question(Question::new(
-        "Mobicash is a wallet owned by which bank?".to_string(),
+        "Which OSI layer is responsible for routing data between different networks?".to_string(),
         vec![
-            "SBI".to_string(), // Correct
-            "ICICI".to_string(), // Hard false
-            "HDFC".to_string(), // Hard false
-            "Axis Bank".to_string(), // Hard false
+            "Network Layer (Layer 3)".to_string(), // Correct
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Application Layer (Layer 7)".to_string(), // Hard false
+            "Data Link Layer (Layer 2)".to_string(), // Hard false
         ],
         0,
     ));
 
     it_category.add_question(Question::new(
-        "Who is the new CEO of Tata Sons group?".to_string(),
+        "Which layer of the OSI model is responsible for establishing, maintaining, and terminating communication sessions?".to_string(),
         vec![
-            "N Chandrashekaran".to_string(), // Correct
-            "Ratan Tata".to_string(), // Hard false
-            "Cyrus Mistry".to_string(), // Hard false
-            "Noel Tata".to_string(), // Hard false
+            "Session Layer (Layer 5)".to_string(), // Correct
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Presentation Layer (Layer 6)".to_string(), // Hard false
+            "Application Layer (Layer 7)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which OSI layer handles the physical transmission of data over a medium?".to_string(),
+        vec![
+            "Physical Layer (Layer 1)".to_string(), // Correct
+            "Data Link Layer (Layer 2)".to_string(), // Hard false
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Network Layer (Layer 3)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which OSI layer is responsible for error detection and correction?".to_string(),
+        vec![
+            "Data Link Layer (Layer 2)".to_string(), // Correct
+            "Network Layer (Layer 3)".to_string(), // Hard false
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Application Layer (Layer 7)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which OSI layer formats data and is responsible for data encryption and compression?".to_string(),
+        vec![
+            "Presentation Layer (Layer 6)".to_string(), // Correct
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Session Layer (Layer 5)".to_string(), // Hard false
+            "Network Layer (Layer 3)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "At which layer of the OSI model do HTTP, FTP, and SMTP operate?".to_string(),
+        vec![
+            "Application Layer (Layer 7)".to_string(), // Correct
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Network Layer (Layer 3)".to_string(), // Hard false
+            "Data Link Layer (Layer 2)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which OSI layer is responsible for end-to-end communication and flow control?".to_string(),
+        vec![
+            "Transport Layer (Layer 4)".to_string(), // Correct
+            "Network Layer (Layer 3)".to_string(), // Hard false
+            "Data Link Layer (Layer 2)".to_string(), // Hard false
+            "Physical Layer (Layer 1)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "In the OSI model, which layer is responsible for IP addressing?".to_string(),
+        vec![
+            "Network Layer (Layer 3)".to_string(), // Correct
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Data Link Layer (Layer 2)".to_string(), // Hard false
+            "Application Layer (Layer 7)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following layers of the OSI model is responsible for converting digital signals to analog and vice versa?".to_string(),
+        vec![
+            "Physical Layer (Layer 1)".to_string(), // Correct
+            "Data Link Layer (Layer 2)".to_string(), // Hard false
+            "Network Layer (Layer 3)".to_string(), // Hard false
+            "Presentation Layer (Layer 6)".to_string(), // Hard false
         ],
         0,
     ));
 
 
+    it_category.add_question(Question::new(
+        "What is the size (in bits) of an IPv4 address?".to_string(),
+        vec![
+            "32 bits".to_string(), // Correct
+            "64 bits".to_string(), // Hard false
+            "128 bits".to_string(), // Hard false
+            "16 bits".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which year was IPv6 officially released?".to_string(),
+        vec![
+            "1998".to_string(), // Correct
+            "2001".to_string(), // Hard false
+            "1994".to_string(), // Hard false
+            "2005".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which IPv4 class is used for private addresses like 192.168.x.x?".to_string(),
+        vec![
+            "Class C".to_string(), // Correct
+            "Class A".to_string(), // Hard false
+            "Class B".to_string(), // Hard false
+            "Class D".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the maximum number of hosts that can be supported on a subnet with a /24 prefix in IPv4?".to_string(),
+        vec![
+            "254 hosts".to_string(), // Correct
+            "256 hosts".to_string(), // Hard false
+            "128 hosts".to_string(), // Hard false
+            "512 hosts".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the total number of possible IPv4 addresses?".to_string(),
+        vec![
+            "4.3 billion".to_string(), // Correct
+            "2.1 billion".to_string(), // Hard false
+            "8.6 billion".to_string(), // Hard false
+            "1.5 billion".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is a valid IPv6 address format?".to_string(),
+        vec![
+            "2001:0db8:85a3:0000:0000:8a2e:0370:7334".to_string(), // Correct
+            "192.168.0.1".to_string(), // Hard false
+            "255.255.255.0".to_string(), // Hard false
+            "3000:0db8:85a3:0000::0000".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which part of an IPv4 address represents the network portion?".to_string(),
+        vec![
+            "The first few bits, determined by the subnet mask".to_string(), // Correct
+            "The last few bits, after the slash".to_string(), // Hard false
+            "All of the address".to_string(), // Hard false
+            "The middle section of the address".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does the IPv6 address block 2001:0db8::/32 represent?".to_string(),
+        vec![
+            "It is reserved for documentation purposes".to_string(), // Correct
+            "It is used for local communication only".to_string(), // Hard false
+            "It is a private network address".to_string(), // Hard false
+            "It is the address for the default gateway".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does the CIDR notation /8 represent in terms of IPv4 subnetting?".to_string(),
+        vec![
+            "It represents 16,777,216 possible addresses".to_string(), // Correct
+            "It represents 256 possible addresses".to_string(), // Hard false
+            "It represents 1,024 possible addresses".to_string(), // Hard false
+            "It represents 65,536 possible addresses".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which IPv6 feature helps avoid network address translation (NAT)?".to_string(),
+        vec![
+            "Auto-configuration (Stateless Address Autoconfiguration)".to_string(), // Correct
+            "Private addressing".to_string(), // Hard false
+            "IP Masquerading".to_string(), // Hard false
+            "Dynamic Host Configuration Protocol (DHCP)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which type of address is used to identify a single device in IPv6?".to_string(),
+        vec![
+            "Unicast".to_string(), // Correct
+            "Multicast".to_string(), // Hard false
+            "Anycast".to_string(), // Hard false
+            "Broadcast".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the purpose of the IPv6 link-local address?".to_string(),
+        vec![
+            "To allow devices on the same link to communicate".to_string(), // Correct
+            "To identify a device across the entire network".to_string(), // Hard false
+            "To enable NAT traversal".to_string(), // Hard false
+            "To route packets across the internet".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which subnet mask is equivalent to the IPv4 CIDR prefix /16?".to_string(),
+        vec![
+            "255.255.0.0".to_string(), // Correct
+            "255.255.255.0".to_string(), // Hard false
+            "255.255.255.255".to_string(), // Hard false
+            "255.255.255.224".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which IPv6 address is used to send a packet to multiple devices on a local network?".to_string(),
+        vec![
+            "Multicast address".to_string(), // Correct
+            "Unicast address".to_string(), // Hard false
+            "Anycast address".to_string(), // Hard false
+            "Broadcast address".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the purpose of subnetting in IPv4 networking?".to_string(),
+        vec![
+            "To divide a large network into smaller, more manageable sub-networks".to_string(), // Correct
+            "To increase the total number of available addresses".to_string(), // Hard false
+            "To allow the use of private addresses only".to_string(), // Hard false
+            "To combine multiple networks into one larger network".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+ 
+    it_category.add_question(Question::new(
+        "What is the length of a MAC address?".to_string(),
+        vec![
+            "48 bits".to_string(), // Correct
+            "32 bits".to_string(), // Hard false
+            "64 bits".to_string(), // Hard false
+            "128 bits".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the format of a MAC address?".to_string(),
+        vec![
+            "6 pairs of hexadecimal digits".to_string(), // Correct
+            "4 pairs of hexadecimal digits".to_string(), // Hard false
+            "8 digits of binary numbers".to_string(), // Hard false
+            "A series of numbers and letters separated by colons".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is true about a MAC address?".to_string(),
+        vec![
+            "It uniquely identifies network interfaces on a local network".to_string(), // Correct
+            "It identifies the network protocol version".to_string(), // Hard false
+            "It changes with each network connection".to_string(), // Hard false
+            "It is used to route traffic on the internet".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which part of a MAC address identifies the manufacturer of the network interface?".to_string(),
+        vec![
+            "The first 3 bytes (OUI - Organizationally Unique Identifier)".to_string(), // Correct
+            "The last 3 bytes".to_string(), // Hard false
+            "The middle 2 bytes".to_string(), // Hard false
+            "The entire address".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does MAC stand for in the context of networking?".to_string(),
+        vec![
+            "Media Access Control".to_string(), // Correct
+            "Machine Access Code".to_string(), // Hard false
+            "Modular Access Control".to_string(), // Hard false
+            "Maximum Allowed Capacity".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which layer of the OSI model uses MAC addresses for communication?".to_string(),
+        vec![
+            "Data Link Layer (Layer 2)".to_string(), // Correct
+            "Network Layer (Layer 3)".to_string(), // Hard false
+            "Transport Layer (Layer 4)".to_string(), // Hard false
+            "Session Layer (Layer 5)".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is a valid MAC address format?".to_string(),
+        vec![
+            "00:1A:2B:3C:4D:5E".to_string(), // Correct
+            "192.168.1.1".to_string(), // Hard false
+            "00-1A-2B-3C-4D-5E".to_string(), // Hard false
+            "0x001A2B3C4D5E".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is a common way to represent a MAC address?".to_string(),
+        vec![
+            "Hexadecimal format with colons or hyphens".to_string(), // Correct
+            "Decimal format with spaces".to_string(), // Hard false
+            "Binary format with dashes".to_string(), // Hard false
+            "Octal format with commas".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Can a MAC address be changed or spoofed?".to_string(),
+        vec![
+            "Yes, it can be spoofed through software".to_string(), // Correct
+            "No, a MAC address is permanent".to_string(), // Hard false
+            "Yes, but only through hardware modifications".to_string(), // Hard false
+            "No, the MAC address is assigned by the router".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the primary purpose of a MAC address in networking?".to_string(),
+        vec![
+            "To identify devices on a local network".to_string(), // Correct
+            "To route packets between networks".to_string(), // Hard false
+            "To secure network connections".to_string(), // Hard false
+            "To determine the IP address of a device".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does it mean if two devices have the same MAC address?".to_string(),
+        vec![
+            "It may cause a conflict on the network".to_string(), // Correct
+            "It means they are connected to different networks".to_string(), // Hard false
+            "It is a sign of network security".to_string(), // Hard false
+            "It is completely fine as long as they use different IP addresses".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the function of the MAC address in Ethernet frames?".to_string(),
+        vec![
+            "It is used for identifying the source and destination devices".to_string(), // Correct
+            "It is used to define the protocol used in the frame".to_string(), // Hard false
+            "It is used to assign an IP address to the frame".to_string(), // Hard false
+            "It is used to encrypt the data within the frame".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is true about a MAC address in a Wi-Fi network?".to_string(),
+        vec![
+            "It is used for identifying the wireless device on the network".to_string(), // Correct
+            "It is used for assigning a channel to the network".to_string(), // Hard false
+            "It determines the Wi-Fi encryption type".to_string(), // Hard false
+            "It is used for determining the frequency band".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "In which range does the OUI (Organizationally Unique Identifier) of a MAC address lie?".to_string(),
+        vec![
+            "First 3 bytes".to_string(), // Correct
+            "Last 3 bytes".to_string(), // Hard false
+            "Middle 2 bytes".to_string(), // Hard false
+            "Entire 6 bytes".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the range of MAC addresses used for locally administered addresses?".to_string(),
+        vec![
+            "Addresses where the first bit of the first byte is set to 1".to_string(), // Correct
+            "Addresses where the last byte is reserved".to_string(), // Hard false
+            "Addresses where the first byte is set to 0".to_string(), // Hard false
+            "Addresses that end with FF".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+
+    it_category.add_question(Question::new(
+        "Which of the following is used for wired Ethernet connections?".to_string(),
+        vec![
+            "RJ45".to_string(), // Correct
+            "USB-C".to_string(), // Hard false
+            "HDMI".to_string(), // Hard false
+            "Thunderbolt".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the maximum theoretical speed of Wi-Fi 6 (802.11ax)?".to_string(),
+        vec![
+            "9.6 Gbps".to_string(), // Correct
+            "1 Gbps".to_string(), // Hard false
+            "5 Gbps".to_string(), // Hard false
+            "40 Gbps".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which Bluetooth version introduced support for Low Energy (LE)?".to_string(),
+        vec![
+            "Bluetooth 4.0".to_string(), // Correct
+            "Bluetooth 3.0".to_string(), // Hard false
+            "Bluetooth 2.0".to_string(), // Hard false
+            "Bluetooth 5.0".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the main purpose of an RJ45 connector?".to_string(),
+        vec![
+            "It is used for Ethernet networking".to_string(), // Correct
+            "It is used for HDMI connections".to_string(), // Hard false
+            "It is used for USB connections".to_string(), // Hard false
+            "It is used for audio equipment".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the typical range of Bluetooth 5.0?".to_string(),
+        vec![
+            "Up to 240 meters".to_string(), // Correct
+            "Up to 10 meters".to_string(), // Hard false
+            "Up to 100 meters".to_string(), // Hard false
+            "Up to 1 meter".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which Wi-Fi standard operates on the 2.4 GHz and 5 GHz bands?".to_string(),
+        vec![
+            "802.11ac".to_string(), // Correct
+            "802.11b".to_string(), // Hard false
+            "802.11n".to_string(), // Hard false
+            "802.11a".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following connectors is commonly used for fiber optic cables?".to_string(),
+        vec![
+            "SC Connector".to_string(), // Correct
+            "RJ45".to_string(), // Hard false
+            "HDMI".to_string(), // Hard false
+            "USB-A".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does the term 'Bluetooth pairing' refer to?".to_string(),
+        vec![
+            "Establishing a secure connection between Bluetooth devices".to_string(), // Correct
+            "Charging Bluetooth devices".to_string(), // Hard false
+            "Setting up a Wi-Fi network".to_string(), // Hard false
+            "Updating the Bluetooth version on a device".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the frequency range of Wi-Fi 5 (802.11ac)?".to_string(),
+        vec![
+            "5 GHz".to_string(), // Correct
+            "2.4 GHz".to_string(), // Hard false
+            "900 MHz".to_string(), // Hard false
+            "1.2 GHz".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which version of Bluetooth allows for faster data transfer rates of up to 3 Mbps?".to_string(),
+        vec![
+            "Bluetooth 2.0".to_string(), // Correct
+            "Bluetooth 3.0".to_string(), // Hard false
+            "Bluetooth 4.0".to_string(), // Hard false
+            "Bluetooth 5.0".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which connection type is commonly used for long-distance, high-speed internet connections in homes and businesses?".to_string(),
+        vec![
+            "Fiber Optic".to_string(), // Correct
+            "Wi-Fi".to_string(), // Hard false
+            "Ethernet (RJ45)".to_string(), // Hard false
+            "Bluetooth".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the maximum range of Wi-Fi 6 (802.11ax)?".to_string(),
+        vec![
+            "Up to 300 meters".to_string(), // Correct
+            "Up to 100 meters".to_string(), // Hard false
+            "Up to 500 meters".to_string(), // Hard false
+            "Up to 50 meters".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is true about RJ45 connectors?".to_string(),
+        vec![
+            "Used for Ethernet networking over twisted pair cables".to_string(), // Correct
+            "Used for HDMI video connections".to_string(), // Hard false
+            "Used for connecting audio equipment".to_string(), // Hard false
+            "Used for USB connections".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the name of the Wi-Fi technology that allows devices to communicate without a traditional router?".to_string(),
+        vec![
+            "Wi-Fi Direct".to_string(), // Correct
+            "Wi-Fi Mesh".to_string(), // Hard false
+            "Wi-Fi Hub".to_string(), // Hard false
+            "Wi-Fi Bridge".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following connection types is commonly used for connecting devices like printers and keyboards to a computer without wires?".to_string(),
+        vec![
+            "Bluetooth".to_string(), // Correct
+            "RJ45".to_string(), // Hard false
+            "USB-C".to_string(), // Hard false
+            "HDMI".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+
+    it_category.add_question(Question::new(
+        "Which routing protocol is used in most modern internet routing?", 
+        vec![
+            "BGP".to_string(), // Correct
+            "RIP".to_string(), // Hard false
+            "IGRP".to_string(), // Hard false
+            "OSPF".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does the term 'dynamic routing' refer to?", 
+        vec![
+            "Routes that are automatically updated and maintained by routers".to_string(), // Correct
+            "Manually configured routes that don't change".to_string(), // Hard false
+            "Routes that are static and need to be manually configured".to_string(), // Hard false
+            "Routes that are used only during initial setup".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which protocol is mainly used for routing within a single autonomous system?", 
+        vec![
+            "OSPF".to_string(), // Correct
+            "BGP".to_string(), // Hard false
+            "RIP".to_string(), // Hard false
+            "EIGRP".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following devices is responsible for directing traffic within a local network?", 
+        vec![
+            "Router".to_string(), // Correct
+            "Switch".to_string(), // Hard false
+            "Hub".to_string(), // Hard false
+            "Modem".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which routing protocol uses a distance-vector method?", 
+        vec![
+            "RIP".to_string(), // Correct
+            "OSPF".to_string(), // Hard false
+            "BGP".to_string(), // Hard false
+            "EIGRP".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What does BGP stand for?", 
+        vec![
+            "Border Gateway Protocol".to_string(), // Correct
+            "Binary Gateway Protocol".to_string(), // Hard false
+            "Basic Gateway Protocol".to_string(), // Hard false
+            "Best Gateway Protocol".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the main role of a default gateway in a network?", 
+        vec![
+            "To route traffic between different networks".to_string(), // Correct
+            "To connect devices within a local network".to_string(), // Hard false
+            "To assign IP addresses to devices".to_string(), // Hard false
+            "To filter incoming and outgoing traffic".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which protocol is used for routing between different autonomous systems?", 
+        vec![
+            "BGP".to_string(), // Correct
+            "RIP".to_string(), // Hard false
+            "OSPF".to_string(), // Hard false
+            "EIGRP".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which type of routing protocol is OSPF?", 
+        vec![
+            "Link-State".to_string(), // Correct
+            "Distance-Vector".to_string(), // Hard false
+            "Hybrid".to_string(), // Hard false
+            "Path-Vector".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the primary advantage of using OSPF over RIP?", 
+        vec![
+            "Faster convergence time".to_string(), // Correct
+            "More secure communication".to_string(), // Hard false
+            "Lower resource usage".to_string(), // Hard false
+            "Better compatibility with older routers".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is true about the routing protocol RIP?", 
+        vec![
+            "It uses hop count as a metric".to_string(), // Correct
+            "It uses bandwidth as a metric".to_string(), // Hard false
+            "It supports larger networks than OSPF".to_string(), // Hard false
+            "It has faster convergence than OSPF".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which router protocol is considered more efficient for large-scale networks?", 
+        vec![
+            "OSPF".to_string(), // Correct
+            "RIP".to_string(), // Hard false
+            "BGP".to_string(), // Hard false
+            "IGRP".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is a key feature of EIGRP?", 
+        vec![
+            "It uses Diffusing Update Algorithm (DUAL)".to_string(), // Correct
+            "It uses link-state information".to_string(), // Hard false
+            "It relies on static routes".to_string(), // Hard false
+            "It does not support variable-length subnet masking".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What is the primary difference between static and dynamic routing?", 
+        vec![
+            "Static routing requires manual configuration, dynamic routing adapts automatically".to_string(), // Correct
+            "Static routing is more secure than dynamic routing".to_string(), // Hard false
+            "Static routing is used only for small networks".to_string(), // Hard false
+            "Dynamic routing is not used in large networks".to_string(), // Hard false
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which of the following is the main function of a routing table?", 
+        vec![
+            "To store the best paths to destination networks".to_string(), // Correct
+            "To filter incoming and outgoing network traffic".to_string(), // Hard false
+            "To assign IP addresses to devices".to_string(), // Hard false
+            "To store DNS information for domain resolution".to_string(), // Hard false
+        ],
+        0,
+    ));
 
 
 
