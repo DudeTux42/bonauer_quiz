@@ -1565,8 +1565,7 @@ pub fn create_sample_quiz() -> Quiz {
         ],
         0,
     ));
-//olkjholdsakjlkj
-    //
+
     it_category.add_question(Question::new(
         "Which of the following devices is responsible for directing traffic within a local network?".to_string(), 
         vec![
