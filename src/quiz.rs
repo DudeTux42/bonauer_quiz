@@ -72,3 +72,5 @@ impl Quiz {
         println!("Your score: {}", score);
     }
 }
+
+//#[test]
