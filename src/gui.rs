@@ -98,7 +98,7 @@ impl MyApp {
 
                     // Determine button color based on the guess state
                     let button_color = if let Some(guess_time) = self.last_guess_time {
-                        if guess_time.elapsed() < Duration::from_secs(1) {
+                        if guess_time.elapsed() < Duration::from_millis(500) {
                             // Highlight the correct answer for 1 second
                             if is_correct {
                                 egui::Color32::from_rgb(100, 255, 100) // Green for correct
