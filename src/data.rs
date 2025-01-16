@@ -24,8 +24,768 @@ pub fn create_sample_quiz() -> Quiz {
         1,
     ));
 
-    
+    math_category.add_question(Question::new(
+        "What is the binary representation of the decimal number 42?".to_string(),
+        vec![
+            "101010".to_string(),
+            "110010".to_string(),
+            "100110".to_string(),
+            "101001".to_string(),
+        ],
+        0,
+    ));
 
+    math_category.add_question(Question::new(
+        "What is the decimal value of the hexadecimal number 1A?".to_string(),
+        vec!["26".to_string(), "24".to_string(), "28".to_string(), "22".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 2^10?".to_string(),
+        vec!["1024".to_string(), "512".to_string(), "2048".to_string(), "1000".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal representation of the binary number 1111 1111?".to_string(),
+        vec!["FF".to_string(), "F0".to_string(), "F1".to_string(), "FE".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary representation of the hexadecimal number C8?".to_string(),
+        vec![
+            "11001000".to_string(),
+            "11011000".to_string(),
+            "11101000".to_string(),
+            "11110000".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the largest value that can be represented with 8 bits?".to_string(),
+        vec!["255".to_string(), "256".to_string(), "254".to_string(), "512".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of shifting the binary number 0001 0010 to the left by 2 bits?".to_string(),
+        vec![
+            "0100 1000".to_string(),
+            "0001 1000".to_string(),
+            "0100 0000".to_string(),
+            "0010 0100".to_string(),
+        ],
+        3,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the decimal value of the binary number 101010?".to_string(),
+        vec!["42".to_string(), "32".to_string(), "52".to_string(), "62".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many bits are in a byte?".to_string(),
+        vec!["8".to_string(), "16".to_string(), "4".to_string(), "10".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 2^16?".to_string(),
+        vec!["65536".to_string(), "32768".to_string(), "131072".to_string(), "262144".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the smallest positive 2's complement number representable with 8 bits?".to_string(),
+        vec![
+            "-128".to_string(),
+            "-127".to_string(),
+            "-256".to_string(),
+            "0".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal representation of the decimal number 255?".to_string(),
+        vec!["FF".to_string(), "F0".to_string(), "FE".to_string(), "100".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary AND of 1100 and 1010?".to_string(),
+        vec![
+            "1000".to_string(),
+            "1100".to_string(),
+            "1110".to_string(),
+            "1010".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many unique values can be represented with 10 bits?".to_string(),
+        vec!["1024".to_string(), "512".to_string(), "2048".to_string(), "1000".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal equivalent of binary 1010 1010?".to_string(),
+        vec!["AA".to_string(), "A8".to_string(), "AB".to_string(), "B0".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "Which of the following is a valid 8-bit binary number?".to_string(),
+        vec![
+            "11111111".to_string(),
+            "100000000".to_string(),
+            "1111".to_string(),
+            "1".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary representation of the decimal number 17?".to_string(),
+        vec![
+            "10001".to_string(),
+            "10111".to_string(),
+            "11001".to_string(),
+            "10011".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many bits are needed to represent the decimal number 500 in binary?".to_string(),
+        vec!["9".to_string(), "10".to_string(), "8".to_string(), "11".to_string()],
+        3,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of flipping all bits in the binary number 10101010?".to_string(),
+        vec![
+            "01010101".to_string(),
+            "11011011".to_string(),
+            "00101010".to_string(),
+            "11111111".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of adding the binary numbers 1101 and 1011?".to_string(),
+        vec![
+            "11000".to_string(),
+            "10110".to_string(),
+            "10000".to_string(),
+            "11101".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 2^8?".to_string(),
+        vec!["256".to_string(), "128".to_string(), "512".to_string(), "64".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal representation of the decimal number 64?".to_string(),
+        vec!["40".to_string(), "44".to_string(), "64".to_string(), "41".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary representation of the decimal number 19?".to_string(),
+        vec![
+            "10011".to_string(),
+            "11001".to_string(),
+            "10110".to_string(),
+            "11100".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the value of π (pi) rounded to 3 decimal places?".to_string(),
+        vec![
+            "3.141".to_string(),
+            "3.142".to_string(),
+            "3.140".to_string(),
+            "3.143".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many bytes are in a kilobyte?".to_string(),
+        vec!["1024".to_string(), "1000".to_string(), "512".to_string(), "2048".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 1111 AND 1010 in binary?".to_string(),
+        vec![
+            "1010".to_string(),
+            "1110".to_string(),
+            "1100".to_string(),
+            "1000".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the square root of 144?".to_string(),
+        vec!["12".to_string(), "14".to_string(), "10".to_string(), "16".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 2^16?".to_string(),
+        vec!["65536".to_string(), "32768".to_string(), "131072".to_string(), "4096".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary representation of the hexadecimal number 7F?".to_string(),
+        vec![
+            "01111111".to_string(),
+            "11111111".to_string(),
+            "10000000".to_string(),
+            "10101010".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the decimal equivalent of binary 101010?".to_string(),
+        vec!["42".to_string(), "45".to_string(), "40".to_string(), "50".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the area of a circle with radius 7 (π ≈ 3.14)?".to_string(),
+        vec![
+            "153.86".to_string(),
+            "150.00".to_string(),
+            "140.12".to_string(),
+            "160.00".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal value of 255 in decimal?".to_string(),
+        vec!["FF".to_string(), "F0".to_string(), "FE".to_string(), "0F".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 12 * 12?".to_string(),
+        vec!["144".to_string(), "132".to_string(), "156".to_string(), "150".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many unique values can 10 bits represent?".to_string(),
+        vec!["1024".to_string(), "1000".to_string(), "2048".to_string(), "512".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary complement of 1010?".to_string(),
+        vec!["0101".to_string(), "1001".to_string(), "1100".to_string(), "0110".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 3 * (4 + 5)?".to_string(),
+        vec!["27".to_string(), "12".to_string(), "15".to_string(), "9".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal representation of the binary number 1111 0000?".to_string(),
+        vec!["F0".to_string(), "0F".to_string(), "FF".to_string(), "F1".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 256 / 16?".to_string(),
+        vec!["16".to_string(), "8".to_string(), "32".to_string(), "12".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the sum of the first 10 natural numbers?".to_string(),
+        vec!["55".to_string(), "50".to_string(), "60".to_string(), "45".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the 2's complement of 0110 (4 bits)?".to_string(),
+        vec![
+            "1010".to_string(),
+            "1110".to_string(),
+            "0100".to_string(),
+            "1100".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 2^32?".to_string(),
+        vec![
+            "4,294,967,296".to_string(),
+            "2,147,483,648".to_string(),
+            "8,589,934,592".to_string(),
+            "1,073,741,824".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the decimal equivalent of hexadecimal 1A3?".to_string(),
+        vec!["419".to_string(), "411".to_string(), "420".to_string(), "413".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many bits are in a byte?".to_string(),
+        vec!["8".to_string(), "4".to_string(), "16".to_string(), "32".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary equivalent of the decimal number 85?".to_string(),
+        vec![
+            "1010101".to_string(),
+            "1101101".to_string(),
+            "1110111".to_string(),
+            "1001101".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the sum of the angles in a triangle?".to_string(),
+        vec![
+            "180 degrees".to_string(),
+            "90 degrees".to_string(),
+            "360 degrees".to_string(),
+            "270 degrees".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of hexadecimal F multiplied by 2?".to_string(),
+        vec!["1E".to_string(), "2F".to_string(), "FF".to_string(), "10".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 64 divided by 2^3?".to_string(),
+        vec!["8".to_string(), "16".to_string(), "4".to_string(), "2".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the value of log2(1024)?".to_string(),
+        vec!["10".to_string(), "9".to_string(), "11".to_string(), "12".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal equivalent of binary 11010101?".to_string(),
+        vec!["D5".to_string(), "C5".to_string(), "F5".to_string(), "A5".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the greatest common divisor (GCD) of 24 and 36?".to_string(),
+        vec!["12".to_string(), "6".to_string(), "18".to_string(), "24".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary result of 1100 XOR 1010?".to_string(),
+        vec![
+            "0110".to_string(),
+            "1110".to_string(),
+            "1011".to_string(),
+            "1101".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the square of 15?".to_string(),
+        vec!["225".to_string(), "200".to_string(), "250".to_string(), "240".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the decimal equivalent of binary 11111111?".to_string(),
+        vec!["255".to_string(), "256".to_string(), "128".to_string(), "127".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 5 + 3 * 2?".to_string(),
+        vec!["11".to_string(), "16".to_string(), "13".to_string(), "10".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the largest 8-bit unsigned integer value?".to_string(),
+        vec![
+            "255".to_string(),
+            "256".to_string(),
+            "127".to_string(),
+            "128".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many hexadecimal digits are needed to represent 16 bits?".to_string(),
+        vec!["4".to_string(), "8".to_string(), "16".to_string(), "2".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of binary 10101 OR 1100?".to_string(),
+        vec![
+            "11101".to_string(),
+            "10101".to_string(),
+            "11001".to_string(),
+            "11100".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 7 factorial (7!)?".to_string(),
+        vec![
+            "5040".to_string(),
+            "4032".to_string(),
+            "2520".to_string(),
+            "720".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal value of 4095 in decimal?".to_string(),
+        vec!["FFF".to_string(), "FFE".to_string(), "FAF".to_string(), "FFF0".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the least common multiple (LCM) of 12 and 18?".to_string(),
+        vec!["36".to_string(), "72".to_string(), "24".to_string(), "48".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many unique values can be represented with 16 bits?".to_string(),
+        vec!["65536".to_string(), "32768".to_string(), "131072".to_string(), "1024".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary result of 1000 AND 1100?".to_string(),
+        vec![
+            "1000".to_string(),
+            "1100".to_string(),
+            "1010".to_string(),
+            "1110".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 3 to the power of 4 (3^4)?".to_string(),
+        vec!["81".to_string(), "27".to_string(), "64".to_string(), "72".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary equivalent of decimal 100?".to_string(),
+        vec![
+            "1100100".to_string(),
+            "1001100".to_string(),
+            "1010100".to_string(),
+            "1110000".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of (7 + 3) * (8 - 5)?".to_string(),
+        vec!["30".to_string(), "50".to_string(), "40".to_string(), "20".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal representation of binary 11101111?".to_string(),
+        vec!["EF".to_string(), "FE".to_string(), "FF".to_string(), "EE".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 100 / 2^3?".to_string(),
+        vec!["12.5".to_string(), "25".to_string(), "10".to_string(), "20".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 256 / 2^4?".to_string(),
+        vec!["16".to_string(), "8".to_string(), "32".to_string(), "12".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary representation of the hexadecimal number 3C?".to_string(),
+        vec![
+            "00111100".to_string(),
+            "11110000".to_string(),
+            "10101100".to_string(),
+            "11101100".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 2^32?".to_string(),
+        vec![
+            "4,294,967,296".to_string(),
+            "2,147,483,648".to_string(),
+            "8,589,934,592".to_string(),
+            "1,073,741,824".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the decimal equivalent of hexadecimal 1A3?".to_string(),
+        vec!["419".to_string(), "411".to_string(), "420".to_string(), "413".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many bits are in a byte?".to_string(),
+        vec!["8".to_string(), "4".to_string(), "16".to_string(), "32".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary equivalent of the decimal number 85?".to_string(),
+        vec![
+            "1010101".to_string(),
+            "1101101".to_string(),
+            "1110111".to_string(),
+            "1001101".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the sum of the angles in a triangle?".to_string(),
+        vec![
+            "180 degrees".to_string(),
+            "90 degrees".to_string(),
+            "360 degrees".to_string(),
+            "270 degrees".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of hexadecimal F multiplied by 2?".to_string(),
+        vec!["1E".to_string(), "2F".to_string(), "FF".to_string(), "10".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 64 divided by 2^3?".to_string(),
+        vec!["8".to_string(), "16".to_string(), "4".to_string(), "2".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the value of log2(1024)?".to_string(),
+        vec!["10".to_string(), "9".to_string(), "11".to_string(), "12".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal equivalent of binary 11010101?".to_string(),
+        vec!["D5".to_string(), "C5".to_string(), "F5".to_string(), "A5".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the greatest common divisor (GCD) of 24 and 36?".to_string(),
+        vec!["12".to_string(), "6".to_string(), "18".to_string(), "24".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary result of 1100 XOR 1010?".to_string(),
+        vec![
+            "0110".to_string(),
+            "1110".to_string(),
+            "1011".to_string(),
+            "1101".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the square of 15?".to_string(),
+        vec!["225".to_string(), "200".to_string(), "250".to_string(), "240".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the decimal equivalent of binary 11111111?".to_string(),
+        vec!["255".to_string(), "256".to_string(), "128".to_string(), "127".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 5 + 3 * 2?".to_string(),
+        vec!["11".to_string(), "16".to_string(), "13".to_string(), "10".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the largest 8-bit unsigned integer value?".to_string(),
+        vec![
+            "255".to_string(),
+            "256".to_string(),
+            "127".to_string(),
+            "128".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many hexadecimal digits are needed to represent 16 bits?".to_string(),
+        vec!["4".to_string(), "8".to_string(), "16".to_string(), "2".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of binary 10101 OR 1100?".to_string(),
+        vec![
+            "11101".to_string(),
+            "10101".to_string(),
+            "11001".to_string(),
+            "11100".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 7 factorial (7!)?".to_string(),
+        vec![
+            "5040".to_string(),
+            "4032".to_string(),
+            "2520".to_string(),
+            "720".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal value of 4095 in decimal?".to_string(),
+        vec!["FFF".to_string(), "FFE".to_string(), "FAF".to_string(), "FFF0".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the least common multiple (LCM) of 12 and 18?".to_string(),
+        vec!["36".to_string(), "72".to_string(), "24".to_string(), "48".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "How many unique values can be represented with 16 bits?".to_string(),
+        vec!["65536".to_string(), "32768".to_string(), "131072".to_string(), "1024".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary result of 1000 AND 1100?".to_string(),
+        vec![
+            "1000".to_string(),
+            "1100".to_string(),
+            "1010".to_string(),
+            "1110".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 3 to the power of 4 (3^4)?".to_string(),
+        vec!["81".to_string(), "27".to_string(), "64".to_string(), "72".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary equivalent of decimal 100?".to_string(),
+        vec![
+            "1100100".to_string(),
+            "1001100".to_string(),
+            "1010100".to_string(),
+            "1110000".to_string(),
+        ],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of (7 + 3) * (8 - 5)?".to_string(),
+        vec!["30".to_string(), "50".to_string(), "40".to_string(), "20".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the hexadecimal representation of binary 11101111?".to_string(),
+        vec!["EF".to_string(), "FE".to_string(), "FF".to_string(), "EE".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the result of 100 / 2^3?".to_string(),
+        vec!["12.5".to_string(), "25".to_string(), "10".to_string(), "20".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is 256 / 2^4?".to_string(),
+        vec!["16".to_string(), "8".to_string(), "32".to_string(), "12".to_string()],
+        0,
+    ));
+
+    math_category.add_question(Question::new(
+        "What is the binary representation of the hexadecimal number 3C?".to_string(),
+        vec![
+            "00111100".to_string(),
+            "11110000".to_string(),
+            "10101100".to_string(),
+            "11101100".to_string(),
+        ],
+        0,
+    ));
 
 
     // Category: IT
@@ -1697,6 +2457,466 @@ pub fn create_sample_quiz() -> Quiz {
         ],
         0,
     ));
+
+
+    it_category.add_question(Question::new(
+        "Who developed the first email system used on ARPANET?".to_string(),
+        vec![
+            "Ray Tomlinson".to_string(), // Correct
+            "Vint Cerf".to_string(),
+            "Jon Postel".to_string(),
+            "Leonard Kleinrock".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What was the name of the first known computer worm to spread over the internet?".to_string(),
+        vec![
+            "Morris Worm".to_string(), // Correct
+            "ILOVEYOU".to_string(),
+            "Conficker".to_string(),
+            "Code Red".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which obscure IBM product was known as the 'RS/6000 SP' and inspired the supercomputer in the movie 'Deep Blue'?".to_string(),
+        vec![
+            "IBM Scalable POWERparallel System".to_string(), // Correct
+            "IBM Blue Gene".to_string(),
+            "IBM Quantum System One".to_string(),
+            "IBM System/360 Model 91".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which programming language was originally developed to control industrial machines like CNCs?".to_string(),
+        vec![
+            "G-Code".to_string(), // Correct
+            "Forth".to_string(),
+            "COBOL".to_string(),
+            "Ada".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which company first introduced a consumer laptop with a trackpoint (pointing stick) in its keyboard?".to_string(),
+        vec![
+            "IBM".to_string(), // Correct
+            "Toshiba".to_string(),
+            "Compaq".to_string(),
+            "Dell".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What was the name of the first computer to use silicon transistors instead of vacuum tubes?".to_string(),
+        vec![
+            "TX-0".to_string(), // Correct
+            "UNIVAC I".to_string(),
+            "EDSAC".to_string(),
+            "ENIAC".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who is credited with developing the first commercial database system, IMS (Information Management System)?".to_string(),
+        vec![
+            "IBM".to_string(), // Correct
+            "Oracle".to_string(),
+            "Honeywell".to_string(),
+            "DEC".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What was the name of the first portable computer, introduced in 1981?".to_string(),
+        vec![
+            "Osborne 1".to_string(), // Correct
+            "IBM PC 5150".to_string(),
+            "Compaq Portable".to_string(),
+            "Apple Macintosh".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which bizarre device used in the 1970s was known as the 'Honeywell Kitchen Computer'?".to_string(),
+        vec![
+            "Honeywell H316".to_string(), // Correct
+            "Honeywell Model 3".to_string(),
+            "Honeywell Multics".to_string(),
+            "Honeywell Mark III".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which ancient programming language is still used to control air traffic systems worldwide?".to_string(),
+        vec![
+            "JOVIAL".to_string(), // Correct
+            "COBOL".to_string(),
+            "Ada".to_string(),
+            "Fortran".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who was the inventor of the VESA mount standard?".to_string(),
+        vec![
+            "Erik Anderson".to_string(), 
+            "Lars Thomsen".to_string(),
+            "Bill Lempesis".to_string(), // Correct
+            "John H. VESA".to_string(), // Trick answer
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which company first introduced the PCI Express (PCIe) standard?".to_string(),
+        vec![
+            "Intel".to_string(), // Correct
+            "IBM".to_string(),
+            "AMD".to_string(),
+            "NVIDIA".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who invented the first graphical user interface (GUI)?".to_string(),
+        vec![
+            "Douglas Engelbart".to_string(),
+            "Alan Kay".to_string(), // Correct
+            "Steve Jobs".to_string(),
+            "Xerox PARC team".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the concept of the first trackball device?".to_string(),
+        vec![
+            "Ralph Benjamin".to_string(), // Correct
+            "Douglas Engelbart".to_string(),
+            "Clifford Berry".to_string(),
+            "Ivan Sutherland".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which company developed the first solid-state drive (SSD)?".to_string(),
+        vec![
+            "SanDisk".to_string(),
+            "IBM".to_string(),
+            "StorageTek".to_string(), // Correct
+            "Toshiba".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which programming language was developed by IBM for artificial intelligence in 1956?".to_string(),
+        vec![
+            "FORTRAN".to_string(),
+            "LISP".to_string(),
+            "IPL (Information Processing Language)".to_string(), // Correct
+            "ALGOL".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who designed the first computer virus intended for testing purposes?".to_string(),
+        vec![
+            "Fred Cohen".to_string(),
+            "John von Neumann".to_string(), // Correct
+            "Robert Tappan Morris".to_string(),
+            "Mark Russinovich".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who created the ZIP file compression format?".to_string(),
+        vec![
+            "Phil Katz".to_string(), // Correct
+            "Ross Williams".to_string(),
+            "Gary Kildall".to_string(),
+            "Jean-loup Gailly".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "What was the first computer mouse made of?".to_string(),
+        vec![
+            "Plastic".to_string(),
+            "Wood".to_string(), // Correct
+            "Metal".to_string(),
+            "Bakelite".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which company developed the first color computer monitor?".to_string(),
+        vec![
+            "Sony".to_string(),
+            "IBM".to_string(),
+            "RCA".to_string(), // Correct
+            "Compaq".to_string(),
+        ],
+        2,
+    ));
+
+
+    it_category.add_question(Question::new(
+        "Who is considered the father of the modern computer?".to_string(),
+        vec![
+            "Alan Turing".to_string(),
+            "Charles Babbage".to_string(), // Correct
+            "John von Neumann".to_string(),
+            "Steve Jobs".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who is known as the father of artificial intelligence?".to_string(),
+        vec![
+            "John McCarthy".to_string(), // Correct
+            "Alan Turing".to_string(),
+            "Marvin Minsky".to_string(),
+            "Herbert Simon".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the first compiler?".to_string(),
+        vec![
+            "Grace Hopper".to_string(), // Correct
+            "Ada Lovelace".to_string(),
+            "Alan Kay".to_string(),
+            "Donald Knuth".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which personality is often associated with the invention of the Internet?".to_string(),
+        vec![
+            "Tim Berners-Lee".to_string(),
+            "Vint Cerf".to_string(), // Correct
+            "Robert Kahn".to_string(),
+            "Linus Torvalds".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who invented the World Wide Web?".to_string(),
+        vec![
+            "Tim Berners-Lee".to_string(), // Correct
+            "Marc Andreessen".to_string(),
+            "Bill Gates".to_string(),
+            "Steve Wozniak".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which IT personality founded Microsoft?".to_string(),
+        vec![
+            "Paul Allen".to_string(),
+            "Steve Jobs".to_string(),
+            "Bill Gates".to_string(), // Correct
+            "Larry Page".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the Linux operating system?".to_string(),
+        vec![
+            "Dennis Ritchie".to_string(),
+            "Ken Thompson".to_string(),
+            "Linus Torvalds".to_string(), // Correct
+            "Richard Stallman".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who is considered the first programmer in history?".to_string(),
+        vec![
+            "Grace Hopper".to_string(),
+            "Ada Lovelace".to_string(), // Correct
+            "Margaret Hamilton".to_string(),
+            "Hedy Lamarr".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the concept of relational databases?".to_string(),
+        vec![
+            "Larry Ellison".to_string(),
+            "Edgar F. Codd".to_string(), // Correct
+            "James Gosling".to_string(),
+            "Donald D. Chamberlin".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who is regarded as the creator of Bitcoin?".to_string(),
+        vec![
+            "Vitalik Buterin".to_string(),
+            "Hal Finney".to_string(),
+            "Satoshi Nakamoto".to_string(), // Correct
+            "Gavin Andresen".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who invented the programming language C?".to_string(),
+        vec![
+            "Brian Kernighan".to_string(),
+            "Ken Thompson".to_string(),
+            "Dennis Ritchie".to_string(), // Correct
+            "Bjarne Stroustrup".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who played a major role in developing UNIX?".to_string(),
+        vec![
+            "Dennis Ritchie".to_string(),
+            "Ken Thompson".to_string(), // Correct
+            "Linus Torvalds".to_string(),
+            "Alan Turing".to_string(),
+        ],
+        1,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the first version of Java?".to_string(),
+        vec![
+            "James Gosling".to_string(), // Correct
+            "Guido van Rossum".to_string(),
+            "Brendan Eich".to_string(),
+            "Rasmus Lerdorf".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who invented the Python programming language?".to_string(),
+        vec![
+            "James Gosling".to_string(),
+            "Larry Wall".to_string(),
+            "Guido van Rossum".to_string(), // Correct
+            "Bjarne Stroustrup".to_string(),
+        ],
+        2,
+    ));
+
+    it_category.add_question(Question::new(
+        "Which personality co-founded Apple?".to_string(),
+        vec![
+            "Steve Jobs".to_string(),
+            "Steve Wozniak".to_string(),
+            "Ronald Wayne".to_string(),
+            "All of the above".to_string(), // Correct
+        ],
+        3,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who is known as the creator of the algorithm used for Google search?".to_string(),
+        vec![
+            "Larry Page".to_string(), // Correct
+            "Sergey Brin".to_string(),
+            "Jeff Dean".to_string(),
+            "Peter Norvig".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the first email application?".to_string(),
+        vec![
+            "Ray Tomlinson".to_string(), // Correct
+            "Vint Cerf".to_string(),
+            "Paul Baran".to_string(),
+            "Jon Postel".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the foundations of information encryption?".to_string(),
+        vec![
+            "Claude Shannon".to_string(), // Correct
+            "Alan Turing".to_string(),
+            "Whitfield Diffie".to_string(),
+            "Ralph Merkle".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who developed the first version of Ruby on Rails?".to_string(),
+        vec![
+            "David Heinemeier Hansson".to_string(), // Correct
+            "Matz (Yukihiro Matsumoto)".to_string(),
+            "Martin Fowler".to_string(),
+            "Kent Beck".to_string(),
+        ],
+        0,
+    ));
+
+    it_category.add_question(Question::new(
+        "Who is considered the founder of the open-source movement?".to_string(),
+        vec![
+            "Linus Torvalds".to_string(),
+            "Richard Stallman".to_string(), // Correct
+            "Bruce Perens".to_string(),
+            "Eric S. Raymond".to_string(),
+        ],
+        1,
+    ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
