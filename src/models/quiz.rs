@@ -33,17 +33,7 @@ impl Quiz {
 
     pub fn take_quiz(&self, category_name: &str) -> usize {
         if let Some(category) = self.categories.get(category_name) {
-            let mut questions = category.questions.clone();
-            let mut rng = thread_rng();
-            questions.shuffle(&mut rng);
-
-            let mut score = 0;
-            for question in questions {
-                if question.ask() {
-                    score += 1;
-                }
-            }
-            score
+            category.take_quiz()
         } else {
             0
         }

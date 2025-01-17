@@ -1,6 +1,8 @@
 use eframe::egui;
 use crate::models::{Category, Question, Quiz};
 use std::time::{Duration, Instant};
+use rand::seq::SliceRandom;
+use rand::thread_rng;
 
 pub struct MyApp {
     categories: Vec<Category>,
@@ -55,7 +57,13 @@ impl MyApp {
 
                 if ui.add(button).clicked() {
                     self.selected_category = Some(category.clone());
-                    self.current_questions = self.quiz.initialize_questions(&category.name);
+                    if let Some(cat) = self.quiz.categories.get(&category.name) {
+                        let mut questions = cat.questions.clone();
+                        let mut rng = thread_rng();
+                        questions.shuffle(&mut rng);
+                        questions.truncate(10);
+                        self.current_questions = questions;
+                    }
                     self.current_question_index = 0;
                     self.score = 0;
                 }
@@ -144,7 +152,13 @@ impl MyApp {
                 )
                 .clicked()
                 {
-                    self.current_questions = self.quiz.initialize_questions(&category.name);
+                    if let Some(cat) = self.quiz.categories.get(&category.name) {
+                        let mut questions = cat.questions.clone();
+                        let mut rng = thread_rng();
+                        questions.shuffle(&mut rng);
+                        questions.truncate(10);
+                        self.current_questions = questions;
+                    }
                     self.current_question_index = 0;
                     self.score = 0;
                     self.last_guess_time = None;
