@@ -1,13 +1,10 @@
 use eframe::egui;
 
-mod gui;
-mod data;
-mod category;
-mod question;
-mod ipv4;
+mod models;
+mod ui;
 mod utils;
-mod quiz;
-
+mod error;
+mod data;
 
 fn main() {
     let options = eframe::NativeOptions::default();
