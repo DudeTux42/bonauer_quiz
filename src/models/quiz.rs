@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use rand::prelude::SliceRandom;
 use crate::models::{Category, Question};
 
 #[derive(Clone)]
