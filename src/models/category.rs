@@ -1,10 +1,10 @@
-use crate::question::Question;
+use crate::models::Question;
+use rand::seq::SliceRandom;
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct Category {
     pub name: String,
     pub questions: Vec<Question>,
-    pub _subcategories: Vec<Category>,
 }
 
 impl Category {
@@ -12,8 +12,6 @@ impl Category {
         Category {
             name,
             questions: Vec::new(),
-            _subcategories: Vec::new(),
-
         }
     }
 
@@ -21,12 +19,18 @@ impl Category {
         self.questions.push(question);
     }
 
-    pub fn _add_subcategory(&mut self, subcategory: Category) {
-        self._subcategories.push(subcategory);
-    }
+    pub fn take_quiz(&self) -> usize {
+        let mut score = 0;
+        let mut rng = rand::thread_rng();
+        let mut quiz_questions = self.questions.clone();
+        quiz_questions.shuffle(&mut rng);
+        quiz_questions.truncate(10);
 
-    pub fn _get_subcategory(&self, name: &str) -> Option<&Category> {
-        self._subcategories.iter().find(|sub| sub.name == name)
+        for question in quiz_questions {
+            if question.ask() {
+                score += 1;
+            }
+        }
+        score
     }
 }
-

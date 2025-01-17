@@ -11,7 +11,7 @@ fn main() {
     let _ = eframe::run_native(
         "Bonauer Quiz GUI",
         options,
-        Box::new(|_cc| Ok(Box::new(gui::MyApp::default()))),
+        Box::new(|_cc| Ok(Box::new(ui::MyApp::default()))),
     );
 }
 
