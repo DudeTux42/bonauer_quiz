@@ -1,8 +1,8 @@
-use eframe::egui;
 use crate::models::{Category, Question, Quiz};
-use std::time::{Duration, Instant};
+use eframe::egui;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
+use std::time::{Duration, Instant};
 
 pub struct MyApp {
     categories: Vec<Category>,
@@ -47,29 +47,49 @@ impl MyApp {
         ui.heading("Bonauer Quiz");
         ui.label("Select a game mode:");
 
+        let category_names: Vec<String> = self
+            .categories
+            .iter()
+            .map(|category| category.name.clone())
+            .collect();
+
         ui.vertical_centered(|ui| {
-            for category in &self.categories {
-                let button = egui::Button::new(
-                    egui::RichText::new(&category.name).size(20.0),
-                )
+            for (i, category_name) in category_names.iter().enumerate() {
+                let button = egui::Button::new(egui::RichText::new(category_name).size(20.0))
                     .fill(egui::Color32::from_rgb(40, 40, 40))
                     .min_size(egui::Vec2::new(ui.available_width(), 40.0));
 
                 if ui.add(button).clicked() {
-                    self.selected_category = Some(category.clone());
-                    if let Some(cat) = self.quiz.categories.get(&category.name) {
-                        let mut questions = cat.questions.clone();
-                        let mut rng = thread_rng();
-                        questions.shuffle(&mut rng);
-                        questions.truncate(10);
-                        self.current_questions = questions;
-                    }
-                    self.current_question_index = 0;
-                    self.score = 0;
+                    self.selected_category = Some(self.categories[i].clone());
+                    println!("Selected category: {}", category_name); // Print the selected category
+                    self.select_and_shuffle_questions(category_name);
                 }
                 ui.add_space(10.0);
             }
         });
+    }
+
+    fn select_and_shuffle_questions(&mut self, category_name: &str) {
+        if let Some(cat) = self.quiz.categories.get(category_name) {
+            let mut questions = cat.questions.clone();
+
+            if category_name != "IPV4" {
+                let mut rng = thread_rng();
+                questions.shuffle(&mut rng);
+                questions.truncate(10);
+
+                // Shuffle the options for each truncated question
+                for question in &mut questions {
+                    question.shuffle_options();
+                }
+            } else {
+                questions.truncate(10); // Only truncate without shuffling for ipv4_category
+            }
+
+            self.current_questions = questions;
+        }
+        self.current_question_index = 0;
+        self.score = 0;
     }
 
     fn show_quiz(&mut self, ui: &mut egui::Ui, category: &Category) {
@@ -87,10 +107,7 @@ impl MyApp {
 
             ui.vertical_centered(|ui| {
                 ui.add_space(10.0);
-                ui.label(
-                    egui::RichText::new(&question.question_text)
-                        .size(24.0),
-                );
+                ui.label(egui::RichText::new(&question.question_text).size(24.0));
                 ui.add_space(20.0);
 
                 let mut guessed = false;
@@ -113,12 +130,10 @@ impl MyApp {
                         egui::Color32::from_rgb(40, 40, 40)
                     };
 
-                    let button = egui::Button::new(
-                        egui::RichText::new(option).size(20.0),
-                    )
-                    .fill(button_color)
-                    .wrap()
-                    .min_size(egui::Vec2::new(ui.available_width(), 40.0));
+                    let button = egui::Button::new(egui::RichText::new(option).size(20.0))
+                        .fill(button_color)
+                        .wrap()
+                        .min_size(egui::Vec2::new(ui.available_width(), 40.0));
 
                     if ui.add(button).clicked() && self.last_guess_time.is_none() {
                         self.last_guess_time = Some(Instant::now());
@@ -147,10 +162,9 @@ impl MyApp {
 
                 ui.add_space(30.0);
 
-                if ui.button(
-                    egui::RichText::new("Restart Quiz").size(20.0),
-                )
-                .clicked()
+                if ui
+                    .button(egui::RichText::new("Restart Quiz").size(20.0))
+                    .clicked()
                 {
                     if let Some(cat) = self.quiz.categories.get(&category.name) {
                         let mut questions = cat.questions.clone();
@@ -166,10 +180,9 @@ impl MyApp {
 
                 ui.add_space(10.0);
 
-                if ui.button(
-                    egui::RichText::new("Back to Main Menu").size(18.0),
-                )
-                .clicked()
+                if ui
+                    .button(egui::RichText::new("Back to Main Menu").size(18.0))
+                    .clicked()
                 {
                     self.selected_category = None;
                     self.current_questions.clear();
