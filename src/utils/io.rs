@@ -59,11 +59,15 @@ pub fn choose_category(categories: Vec<String>) -> String {
 
 pub fn first_and_last_three(vec: &[Ipv4Addr]) -> Vec<Ipv4Addr> {
     let mut result = Vec::new();
-    if vec.len() >= 3 {
+    if vec.is_empty() {
+        result.push(Ipv4Addr::new(0, 0, 0, 0));
+        result.push(Ipv4Addr::new(0, 0, 0, 0));
+    }
+    if vec.len() > 3 {
         result.extend_from_slice(&vec[..3]); // Die ersten drei
         result.extend_from_slice(&vec[vec.len() - 3..]); // Die letzten drei
     } else {
-        result.extend_from_slice(vec);
+        result.extend_from_slice(&vec);
     }
     result
 }
@@ -126,7 +130,10 @@ mod tests {
         // Test case with an empty vector
         let vec: Vec<Ipv4Addr> = vec![];
         let result = first_and_last_three(&vec);
-        assert_eq!(result, vec![]);
+        assert_eq!(
+            result,
+            vec![Ipv4Addr::new(0, 0, 0, 0), Ipv4Addr::new(0, 0, 0, 0)]
+        );
 
         // Test case with a single element
         let vec = vec![Ipv4Addr::new(203, 0, 113, 5)];
