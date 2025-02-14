@@ -1,4 +1,5 @@
 use std::io::{self, Write};
+use std::net::Ipv4Addr;
 
 // function to read input from the user
 pub fn read_input(prompt: &str) -> String {
@@ -13,7 +14,7 @@ pub fn read_input(prompt: &str) -> String {
 pub fn get_user_number(prompt: &str) -> Option<usize> {
     print!("{}", prompt);
     io::stdout().flush().unwrap_or_default();
-    
+
     let input = read_input("");
     input.parse().ok()
 }
@@ -39,7 +40,7 @@ pub fn choose_category(categories: Vec<String>) -> String {
     }
 
     let mut choice = String::new();
-    io::stdout().flush().unwrap(); 
+    io::stdout().flush().unwrap();
     io::stdin().read_line(&mut choice).unwrap();
 
     // convert user input to int
@@ -55,12 +56,15 @@ pub fn choose_category(categories: Vec<String>) -> String {
 }
 
 // a function that returns the first three and last three elements of a vector
-pub fn first_and_last_three(vec: &[i32]) -> Vec<i32> {
+
+pub fn first_and_last_three(vec: &[Ipv4Addr]) -> Vec<Ipv4Addr> {
     let mut result = Vec::new();
-    
-    result.extend_from_slice(&vec[0..std::cmp::min(3, vec.len())]);
-    result.extend_from_slice(&vec[vec.len().saturating_sub(3)..]);
-    
+    if vec.len() >= 3 {
+        result.extend_from_slice(&vec[..3]); // Die ersten drei
+        result.extend_from_slice(&vec[vec.len() - 3..]); // Die letzten drei
+    } else {
+        result.extend_from_slice(vec);
+    }
     result
 }
 
@@ -69,31 +73,65 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_first_and_last_three() {
+    fn test_first_and_last_three_subnets() {
         // Test case with more than 3 elements
-        let vec = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let vec = vec![
+            Ipv4Addr::new(192, 168, 1, 0),
+            Ipv4Addr::new(192, 168, 1, 1),
+            Ipv4Addr::new(192, 168, 1, 2),
+            Ipv4Addr::new(192, 168, 1, 3),
+            Ipv4Addr::new(192, 168, 1, 4),
+            Ipv4Addr::new(192, 168, 1, 5),
+            Ipv4Addr::new(192, 168, 1, 6),
+            Ipv4Addr::new(192, 168, 1, 7),
+            Ipv4Addr::new(192, 168, 1, 8),
+        ];
         let result = first_and_last_three(&vec);
-        assert_eq!(result, vec![1, 2, 3, 7, 8, 9]);
+        assert_eq!(
+            result,
+            vec![
+                Ipv4Addr::new(192, 168, 1, 0),
+                Ipv4Addr::new(192, 168, 1, 1),
+                Ipv4Addr::new(192, 168, 1, 2),
+                Ipv4Addr::new(192, 168, 1, 6),
+                Ipv4Addr::new(192, 168, 1, 7),
+                Ipv4Addr::new(192, 168, 1, 8),
+            ]
+        );
 
         // Test case with exactly 3 elements
-        let vec = vec![1, 2, 3];
+        let vec = vec![
+            Ipv4Addr::new(10, 0, 0, 1),
+            Ipv4Addr::new(10, 0, 0, 2),
+            Ipv4Addr::new(10, 0, 0, 3),
+        ];
         let result = first_and_last_three(&vec);
-        assert_eq!(result, vec![1, 2, 3, 1, 2, 3]);
+        assert_eq!(
+            result,
+            vec![
+                Ipv4Addr::new(10, 0, 0, 1),
+                Ipv4Addr::new(10, 0, 0, 2),
+                Ipv4Addr::new(10, 0, 0, 3),
+            ]
+        );
 
         // Test case with fewer than 3 elements
-        let vec = vec![1, 2];
+        let vec = vec![Ipv4Addr::new(192, 0, 2, 1), Ipv4Addr::new(192, 0, 2, 2)];
         let result = first_and_last_three(&vec);
-        assert_eq!(result, vec![1, 2, 1, 2]);
+        assert_eq!(
+            result,
+            vec![Ipv4Addr::new(192, 0, 2, 1), Ipv4Addr::new(192, 0, 2, 2),]
+        );
 
         // Test case with an empty vector
-        let vec: Vec<i32> = vec![];
+        let vec: Vec<Ipv4Addr> = vec![];
         let result = first_and_last_three(&vec);
         assert_eq!(result, vec![]);
 
         // Test case with a single element
-        let vec = vec![42];
+        let vec = vec![Ipv4Addr::new(203, 0, 113, 5)];
         let result = first_and_last_three(&vec);
-        assert_eq!(result, vec![42, 42]);
+        assert_eq!(result, vec![Ipv4Addr::new(203, 0, 113, 5)]);
     }
 
     #[test]

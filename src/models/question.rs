@@ -1,7 +1,7 @@
 use rand::prelude::SliceRandom;
 use std::io::{self, Write};
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub struct Question {
     pub question_text: String,
     pub options: Vec<String>,
@@ -57,20 +57,8 @@ impl Question {
         index == self.correct_answer
     }
 
-    // Shuffle options and update the correct_answer index based on the new order
     pub fn shuffle_options(&mut self) {
-        let correct_option = self.options[self.correct_answer].clone();
-        // println!("Before shuffle: Correct option = {}", correct_option); TEST:
-        // Shuffle the options
         let mut rng = rand::thread_rng();
         self.options.shuffle(&mut rng);
-
-        // Find the new index of the correct answer
-        self.correct_answer = self
-            .options
-            .iter()
-            .position(|x| x == &correct_option)
-            .unwrap();
-        // println!("After shuffle: Correct option = {}", self.options[self.correct_answer]); TEST:
     }
 }

@@ -1,16 +1,18 @@
 use crate::models::{Category, Question, Quiz};
+use crate::ui::components;
 use eframe::egui;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::time::{Duration, Instant};
 
+/// Main application structure.
 pub struct MyApp {
+    quiz: Quiz,
     categories: Vec<Category>,
     selected_category: Option<Category>,
     current_questions: Vec<Question>,
     current_question_index: usize,
     score: usize,
-    quiz: Quiz,
     last_guess_time: Option<Instant>,
 }
 
@@ -32,112 +34,106 @@ impl Default for MyApp {
 impl eframe::App for MyApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
+            // Clone the selected_category to avoid holding an immutable borrow on self.
             let selected_category = self.selected_category.clone();
-            if let Some(category) = selected_category {
-                self.show_quiz(ui, &category);
-            } else {
-                self.show_main_menu(ui);
+            match selected_category {
+                None => self.draw_main_menu(ui),
+                Some(category) => self.draw_quiz(ui, &category),
             }
         });
     }
 }
 
 impl MyApp {
-    fn show_main_menu(&mut self, ui: &mut egui::Ui) {
-        ui.heading("Bonauer Quiz");
+    /// Draws the main menu where the user selects a category.
+    fn draw_main_menu(&mut self, ui: &mut egui::Ui) {
+        components::centered_text(ui, "Bonauer Quiz", 30.0);
         ui.label("Select a game mode:");
 
-        let category_names: Vec<String> = self
-            .categories
-            .iter()
-            .map(|category| category.name.clone())
-            .collect();
-
         ui.vertical_centered(|ui| {
-            for (i, category_name) in category_names.iter().enumerate() {
-                let button = egui::Button::new(egui::RichText::new(category_name).size(20.0))
-                    .fill(egui::Color32::from_rgb(40, 40, 40))
-                    .min_size(egui::Vec2::new(ui.available_width(), 40.0));
-
-                if ui.add(button).clicked() {
-                    self.selected_category = Some(self.categories[i].clone());
-                    println!("Selected category: {}", category_name); // Print the selected category
-                    self.select_and_shuffle_questions(category_name);
+            for category in &self.categories.clone() {
+                // Use the reusable QuizButton component.
+                let response = components::QuizButton::new(&category.name)
+                    .size(20.0)
+                    .show(ui);
+                if response.clicked() {
+                    self.selected_category = Some(category.clone());
+                    println!("Selected category: {}", category.name);
+                    self.setup_category(&category);
                 }
                 ui.add_space(10.0);
             }
         });
     }
 
-    fn select_and_shuffle_questions(&mut self, category_name: &str) {
-        if let Some(cat) = self.quiz.categories.get(category_name) {
+    /// Prepares the selected category by selecting and shuffling questions.
+    /// Special categories (e.g., "IPV4" and "Subnetting") are not shuffled.
+    fn setup_category(&mut self, category: &Category) {
+        if let Some(cat) = self.quiz.categories.get(&category.name) {
             let mut questions = cat.questions.clone();
 
-            if category_name != "IPV4" {
+            // For categories other than "IPV4" and "Subnetting", shuffle the questions.
+            if category.name != "IPV4" && category.name != "Subnetting" {
                 let mut rng = thread_rng();
                 questions.shuffle(&mut rng);
                 questions.truncate(10);
-
-                // Shuffle the options for each truncated question
+                // Shuffle the answer options for each question.
                 for question in &mut questions {
                     question.shuffle_options();
                 }
             } else {
-                questions.truncate(10); // Only truncate without shuffling for ipv4_category
+                // For special categories, only truncate the questions.
+                questions.truncate(10);
             }
-
             self.current_questions = questions;
         }
         self.current_question_index = 0;
         self.score = 0;
+        self.last_guess_time = None;
     }
 
-    fn show_quiz(&mut self, ui: &mut egui::Ui, category: &Category) {
-        // Score Counter at the top right
-        ui.horizontal(|ui| {
-            ui.add_space(ui.available_width() - 100.0);
-            ui.label(format!("Score: {}", self.score));
-        });
-
+    /// Draws the quiz screen, including the question, answer buttons, score display, and navigation.
+    fn draw_quiz(&mut self, ui: &mut egui::Ui, category: &Category) {
+        // Display score using the reusable component.
+        components::score_display(ui, self.score);
+        // Display the quiz header with the category title.
+        components::quiz_header(ui, &format!("{} Quiz", category.name), None, 20.0);
         ui.separator();
-        ui.heading(format!("{} Quiz", category.name));
 
         if self.current_question_index < self.current_questions.len() {
             let question = &self.current_questions[self.current_question_index];
-
             ui.vertical_centered(|ui| {
                 ui.add_space(10.0);
+                // Display the question text.
                 ui.label(egui::RichText::new(&question.question_text).size(24.0));
                 ui.add_space(20.0);
 
                 let mut guessed = false;
 
+                // Display each answer option using the AnswerOptionButton component.
                 for (i, option) in question.options.iter().enumerate() {
-                    let is_correct = question.is_correct(i);
-
-                    let button_color = if let Some(guess_time) = self.last_guess_time {
+                    let state = if let Some(guess_time) = self.last_guess_time {
                         if guess_time.elapsed() < Duration::from_millis(500) {
-                            if is_correct {
-                                egui::Color32::from_rgb(100, 255, 100)
+                            if question.is_correct(i) {
+                                "correct"
                             } else {
-                                egui::Color32::from_rgb(40, 40, 40)
+                                "default"
                             }
                         } else {
                             guessed = true;
-                            egui::Color32::from_rgb(40, 40, 40)
+                            "default"
                         }
                     } else {
-                        egui::Color32::from_rgb(40, 40, 40)
+                        "default"
                     };
 
-                    let button = egui::Button::new(egui::RichText::new(option).size(20.0))
-                        .fill(button_color)
-                        .wrap()
-                        .min_size(egui::Vec2::new(ui.available_width(), 40.0));
+                    let response = components::AnswerOptionButton::new(option)
+                        .size(20.0)
+                        .show(ui, state);
 
-                    if ui.add(button).clicked() && self.last_guess_time.is_none() {
+                    if response.clicked() && self.last_guess_time.is_none() {
                         self.last_guess_time = Some(Instant::now());
-                        if is_correct {
+                        if question.is_correct(i) {
                             self.score += 1;
                         }
                     }
@@ -149,9 +145,9 @@ impl MyApp {
                     self.last_guess_time = None;
                 }
             });
-
             ui.ctx().request_repaint();
         } else {
+            // Quiz finished.
             ui.vertical_centered(|ui| {
                 ui.add_space(20.0);
                 ui.label(
@@ -159,27 +155,18 @@ impl MyApp {
                         .size(30.0)
                         .strong(),
                 );
-
                 ui.add_space(30.0);
 
+                // Button to restart the quiz for the current category.
                 if ui
                     .button(egui::RichText::new("Restart Quiz").size(20.0))
                     .clicked()
                 {
-                    if let Some(cat) = self.quiz.categories.get(&category.name) {
-                        let mut questions = cat.questions.clone();
-                        let mut rng = thread_rng();
-                        questions.shuffle(&mut rng);
-                        questions.truncate(10);
-                        self.current_questions = questions;
-                    }
-                    self.current_question_index = 0;
-                    self.score = 0;
-                    self.last_guess_time = None;
+                    self.setup_category(category);
                 }
-
                 ui.add_space(10.0);
 
+                // Button to return to the main menu.
                 if ui
                     .button(egui::RichText::new("Back to Main Menu").size(18.0))
                     .clicked()

@@ -1,6 +1,6 @@
+use crate::data::questions::{abbreviations, it, math};
 use crate::models::{Category, Quiz};
-use crate::utils::ipv4::generate_ipv4_question;
-use crate::data::questions::{math, it, abbreviations};
+use crate::utils::ipv4::{generate_ipv4_question, generate_subnetting_question};
 
 pub fn create_sample_quiz() -> Quiz {
     let mut quiz = Quiz::new();
@@ -26,6 +26,13 @@ pub fn create_sample_quiz() -> Quiz {
         ipv4_category.add_question(generate_ipv4_question());
     }
     quiz.add_category(ipv4_category);
+
+    //Subnetting-Kategorie
+    let mut subnetting_category = Category::new("Subnetting".to_string());
+    for _ in 0..10 {
+        subnetting_category.add_question(generate_subnetting_question());
+    }
+    quiz.add_category(subnetting_category);
 
     quiz
 }
