@@ -59,6 +59,12 @@ impl Question {
 
     pub fn shuffle_options(&mut self) {
         let mut rng = rand::thread_rng();
+        let correct_option = self.options[self.correct_answer].clone();
         self.options.shuffle(&mut rng);
+        self.correct_answer = self
+            .options
+            .iter()
+            .position(|option| *option == correct_option)
+            .unwrap();
     }
 }
