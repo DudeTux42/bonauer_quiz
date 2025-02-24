@@ -484,6 +484,7 @@ dependencies = [
  "eframe",
  "egui",
  "rand",
+ "wasm-bindgen",
 ]
 
 [[package]]

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bonauer Quiz</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="bonauer_quiz_canvas"></canvas>
+    <script type="module">
+        import init from './pkg/bonauer_quiz.js';
+
+        async function run() {
+            await init();
+        }
+
+        run();
+    </script>
+</body>
+</html>
