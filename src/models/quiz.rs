@@ -26,7 +26,10 @@ impl Quiz {
     pub fn initialize_questions(&self, category_name: &str) -> Vec<Question> {
         if let Some(category) = self.categories.get(category_name) {
             let mut questions = category.questions.clone(); // Clone questions from the category
-            let mut rng = rand::thread_rng(); // Create a random number generator
+            #[cfg(not(target_arch = "wasm32"))]
+            let mut rng = rand::thread_rng(); // Create a random number generator for non-wasm32
+            #[cfg(target_arch = "wasm32")]
+            let mut rng = rand::rngs::OsRng; // Create a random number generator for wasm32
             questions.shuffle(&mut rng); // Shuffle the questions randomly
             questions.truncate(10); // Limit the question list to 10 questions
             questions // Return the shuffled list of 10 questions

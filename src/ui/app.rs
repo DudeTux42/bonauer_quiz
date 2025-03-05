@@ -5,6 +5,7 @@ use eframe::egui; // Import eframe and egui for GUI creation
 use eframe::App; // Import the App trait from eframe
 use egui::RichText; // Import RichText for text formatting
 use rand::seq::SliceRandom; // For shuffling the questions and options
+#[cfg(not(target_arch = "wasm32"))]
 use rand::thread_rng; // For creating a random number generator
 use std::time::{Duration, Instant}; // For managing time-related functionality
 
@@ -81,7 +82,10 @@ impl MyApp {
 
             // For non-special categories, shuffle the questions and options
             if category.name != "IPV4" && category.name != "Subnetting" {
-                let mut rng = thread_rng();
+                #[cfg(not(target_arch = "wasm32"))]
+                let mut rng = thread_rng(); // Create a random number generator
+                #[cfg(target_arch = "wasm32")]
+                let mut rng = rand::rngs::OsRng; // Create a random number generator for wasm32
                 questions.shuffle(&mut rng); // Shuffle the questions
                 questions.truncate(10); // Limit to 10 questions
                 for question in &mut questions {

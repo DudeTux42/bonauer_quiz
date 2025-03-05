@@ -29,7 +29,11 @@ impl Category {
         let mut score = 0; // Initialize the score counter
 
         // Create a random number generator
+        #[cfg(not(target_arch = "wasm32"))]
         let mut rng = rand::thread_rng();
+        // Create a random number generator for wasm32
+        #[cfg(target_arch = "wasm32")]
+        let mut rng = rand::rngs::OsRng;
 
         // Clone the questions so that the original list remains unmodified
         let mut quiz_questions = self.questions.clone();
