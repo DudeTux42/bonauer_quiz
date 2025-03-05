@@ -2,6 +2,8 @@
 use crate::models::{Category, Question, Quiz}; // Import models for Category, Question, and Quiz
 use crate::ui::components; // Import reusable UI components
 use eframe::egui; // Import eframe and egui for GUI creation
+use eframe::App; // Import the App trait from eframe
+use egui::RichText; // Import RichText for text formatting
 use rand::seq::SliceRandom; // For shuffling the questions and options
 use rand::thread_rng; // For creating a random number generator
 use std::time::{Duration, Instant}; // For managing time-related functionality

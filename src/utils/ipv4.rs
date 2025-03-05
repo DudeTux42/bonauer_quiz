@@ -2,6 +2,7 @@ use std::net::Ipv4Addr;
 
 use crate::models::Question;
 use crate::utils::io::first_and_last_three;
+#[cfg(not(target_arch = "wasm32"))]
 use rand::thread_rng;
 use rand::Rng;
 

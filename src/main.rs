@@ -1,8 +1,8 @@
+mod data;
+mod error;
 mod models;
 mod ui;
 mod utils;
-mod error;
-mod data;
 
 #[cfg(target_arch = "wasm32")]
 use wasm_bindgen::prelude::*;
@@ -22,7 +22,7 @@ fn main() {
 pub fn start() -> Result<(), JsValue> {
     eframe::start_web(
         "bonauer_quiz_canvas", // id of the canvas element
-        Box::new(|_cc| Box::new(ui::MyApp::default()))),
+        Box::new(|_cc| Box::new(ui::MyApp::default())),
     )?;
     Ok(())
 }

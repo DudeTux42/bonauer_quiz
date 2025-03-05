@@ -1,5 +1,6 @@
 use crate::models::{Category, Question};
 use rand::prelude::SliceRandom; // Import SliceRandom to shuffle the questions
+#[cfg(not(target_arch = "wasm32"))]
 use rand::thread_rng; // Import thread_rng to create a random number generator
 use std::collections::HashMap; // Import HashMap to store categories // Import Category and Question from the models module
 
