@@ -1,6 +1,7 @@
 // Import the necessary traits and modules
+use crate::utils::random;
 use rand::prelude::SliceRandom; // For shuffling the options
-use std::io::{self, Write}; // For handling input and output operations
+use std::io::{self, Write}; // For handling input and output operations // Import the random module for shuffling
 
 #[derive(Clone)] // Allows the Question struct to be cloned
 pub struct Question {

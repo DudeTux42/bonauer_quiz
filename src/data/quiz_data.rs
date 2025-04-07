@@ -1,5 +1,6 @@
 use crate::data::questions::{abbreviations, it, math};
-use crate::models::{Category, Quiz};
+use crate::models::category::Category;
+use crate::models::quiz::Quiz;
 use crate::utils::ipv4::{generate_ipv4_question, generate_subnetting_question};
 
 pub fn create_sample_quiz() -> Quiz {

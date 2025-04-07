@@ -1,7 +1,7 @@
-mod quiz;
-mod category;
-mod question;
+pub mod category;
+pub mod question;
+pub mod quiz;
 
-pub use quiz::Quiz;
 pub use category::Category;
 pub use question::Question;
+pub use quiz::Quiz;

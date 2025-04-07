@@ -26,19 +26,9 @@ where
     min + (u64::from_ne_bytes(buffer) % range_size)
 }
 
-/// Simple range overload for convenience
-pub fn gen_range_simple(min: u64, max: u64) -> u64 {
-    gen_range(min..=max)
-}
-
-/// Generate a random floating point number between 0.0 and 1.0
-pub fn random_f64() -> f64 {
-    let mut buffer = [0u8; 8];
-    getrandom(&mut buffer).expect("Failed to generate random bytes");
-
-    // Convert to u64 and normalize to [0, 1) range
-    let value = u64::from_ne_bytes(buffer);
-    (value as f64) / (u64::MAX as f64)
+/// Generate a random integer in a specified range
+pub fn gen_range_usize(min: usize, max: usize) -> usize {
+    gen_range(min as u64..=max as u64) as usize
 }
 
 /// Shuffle a vector in place using the Fisher-Yates algorithm
@@ -49,7 +39,7 @@ pub fn shuffle<T>(vec: &mut Vec<T>) {
 
     for i in (1..vec.len()).rev() {
         // Get a random index between 0 and i (inclusive)
-        let j = gen_range(0..=i) as usize;
+        let j = gen_range(0..=i as u64) as usize;
         vec.swap(i, j);
     }
 }
