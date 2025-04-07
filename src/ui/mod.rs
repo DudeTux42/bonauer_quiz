@@ -1,4 +1,4 @@
-mod app;
-mod components;
+pub mod app;
+pub mod components;
 
 pub use app::MyApp;

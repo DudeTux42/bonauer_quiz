@@ -1,45 +1,63 @@
-use crate::models::{Category, Question};
-use rand::prelude::SliceRandom; // Import SliceRandom to shuffle the questions
-use rand::thread_rng; // Import thread_rng to create a random number generator
-use std::collections::HashMap; // Import HashMap to store categories // Import Category and Question from the models module
+use crate::utils::random;
+use rand::SeedableRng; // Keep this if you still need it
 
-#[derive(Clone)] // Derive Clone to allow copying of Quiz instances
+#[derive(Clone, Debug)]
 pub struct Quiz {
-    pub categories: HashMap<String, Category>, // Store quiz categories using a HashMap
+    pub title: String,
+    pub description: String,
+    pub questions: Vec<Question>,
+}
+
+#[derive(Clone, Debug)]
+pub struct Question {
+    pub question_text: String,
+    pub answers: Vec<Answer>,
+    pub explanation: Option<String>,
+}
+
+#[derive(Clone, Debug)]
+pub struct Answer {
+    pub text: String,
+    pub correct: bool,
 }
 
 impl Quiz {
-    // Constructor function to create a new Quiz instance
-    pub fn new() -> Self {
+    pub fn new(title: String, description: String, questions: Vec<Question>) -> Self {
         Quiz {
-            categories: HashMap::new(), // Initialize an empty HashMap for categories
+            title,
+            description,
+            questions,
         }
     }
 
-    // Method to add a new category to the quiz
-    pub fn add_category(&mut self, category: Category) {
-        self.categories.insert(category.name.clone(), category); // Insert category into HashMap
-    }
-
-    // Method to initialize and shuffle questions from a selected category
-    pub fn initialize_questions(&self, category_name: &str) -> Vec<Question> {
-        if let Some(category) = self.categories.get(category_name) {
-            let mut questions = category.questions.clone(); // Clone questions from the category
-            let mut rng = rand::thread_rng(); // Create a random number generator
-            questions.shuffle(&mut rng); // Shuffle the questions randomly
-            questions.truncate(10); // Limit the question list to 10 questions
-            questions // Return the shuffled list of 10 questions
-        } else {
-            Vec::new() // Return an empty vector if the category does not exist
+    pub fn shuffle_answers(&mut self) {
+        for question in &mut self.questions {
+            // Use our platform-independent shuffle
+            random::shuffle(&mut question.answers);
         }
     }
 
-    // Method to start the quiz for a given category and return the score
-    pub fn take_quiz(&self, category_name: &str) -> usize {
-        if let Some(category) = self.categories.get(category_name) {
-            category.take_quiz() // Call the take_quiz method from the Category struct
-        } else {
-            0 // Return 0 if the category does not exist
+    pub fn total_questions(&self) -> usize {
+        self.questions.len()
+    }
+}
+
+impl Question {
+    pub fn new(question_text: String, answers: Vec<Answer>, explanation: Option<String>) -> Self {
+        Question {
+            question_text,
+            answers,
+            explanation,
         }
+    }
+
+    pub fn get_correct_answer_index(&self) -> Option<usize> {
+        self.answers.iter().position(|answer| answer.correct)
+    }
+}
+
+impl Answer {
+    pub fn new(text: String, correct: bool) -> Self {
+        Answer { text, correct }
     }
 }
