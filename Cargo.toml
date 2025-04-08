@@ -4,32 +4,61 @@ version = "0.1.0"
 edition = "2021"
 authors = ["DudeTux42"]
 description = "A quiz application"
+repository = "https://github.com/DudeTux42/bonauer_quiz"
+license = "MIT"
 
 [lib]
 name = "bonauer_quiz_lib"
+path = "src/lib.rs"
 crate-type = ["cdylib", "rlib"]
 
 [[bin]]
 name = "bonauer_quiz"
 path = "src/main.rs"
+required-features = ["native"]
 
+[features]
+default = ["native"]
+native = ["eframe/default"]
+
+# Regular dependencies
 [dependencies]
 egui = "0.24.1"
-eframe = { version = "0.24.1", features = ["persistence"] }
+eframe = { version = "0.24.1", default-features = false, features = [
+  "persistence",
+  "glow",
+] }
+log = "0.4.20"
 rand = "0.8.5"
-getrandom = { version = "0.2", features = ["js"] }
-wasm-bindgen = "0.2"
+getrandom = "0.2.15"
+
+# Native-only dependencies
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+env_logger = "0.10.0"
 winapi = { version = "0.3.9", features = ["winuser"] }
-tracing-wasm = "0.2.1"
 
 # WASM-specific dependencies
 [target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2.87"
+wasm-bindgen-futures = "0.4.37"
 console_error_panic_hook = "0.1.7"
-wasm-bindgen = "0.2"
-wasm-bindgen-futures = "0.4.34"
-web-sys = { version = "0.3.61", features = [
+tracing-wasm = "0.2.1"
+getrandom = { version = "0.2.10", features = ["js"] }
+web-sys = { version = "0.3.64", features = [
   "Document",
+  "Window",
   "Element",
   "HtmlCanvasElement",
-  "Window",
+  "console",
 ] }
+js-sys = "0.3.64"
+
+[profile.release]
+opt-level = 2     # Fast and small wasm
+codegen-units = 1
+lto = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true

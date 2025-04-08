@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bonauer Quiz</title>
+    
+    <!-- Remove the href attribute - this will default to the project root -->
+    <link data-trunk rel="rust" data-target-name="bonauer_quiz_lib" data-wasm-opt="2" />
+    
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading Bonauer Quiz...</div>
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        // Display any errors that occur during loading
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error('Error:', error);
+            document.getElementById('loading').innerHTML = 'Error loading app: ' + message;
+        };
+
+        // Wait until everything is loaded
+        window.addEventListener('load', async function() {
+            try {
+                document.getElementById('loading').innerHTML = 'Initializing WASM...';
+                
+                // Import the generated JS glue code
+                const { start } = await import('./bonauer_quiz_lib.js');
+                
+                document.getElementById('loading').innerHTML = 'Starting application...';
+                
+                // Call the start function with the canvas ID
+                start('canvas').catch(e => {
+                    console.error('Failed to start app:', e);
+                    document.getElementById('loading').innerHTML = 'Failed to start app: ' + e.message;
+                });
+                
+                // Hide the loading text when we're done
+                document.getElementById('loading').style.display = 'none';
+            } catch (e) {
+                console.error('Error during initialization:', e);
+                document.getElementById('loading').innerHTML = 'Failed to initialize: ' + e.message;
+            }
+        });
+    </script>
+</body>
+</html>

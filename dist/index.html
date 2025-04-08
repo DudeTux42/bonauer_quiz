@@ -1,37 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
     <title>Bonauer Quiz</title>
+    
+    <!-- Specify the library target name explicitly -->
+    
+<script type="module">
+import init, * as bindings from '/bonauer_quiz-deddebebd08e9f4f.js';
+const wasm = await init({ module_or_path: '/bonauer_quiz-deddebebd08e9f4f_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-        }
-        #bonauer_quiz_canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+        body { background: #f0f0f0; }
+        canvas { width: 100%; height: 100%; }
     </style>
-</head>
+<link rel="modulepreload" href="/bonauer_quiz-deddebebd08e9f4f.js" crossorigin="anonymous" integrity="sha384-JepyzxmimXmAx4IrzRzY/lHvvqx4PfrMS1JPH0Ymh/tOyatTokPRq0UFYAFEthka"><link rel="preload" href="/bonauer_quiz-deddebebd08e9f4f_bg.wasm" crossorigin="anonymous" integrity="sha384-c7awad2QmdcK2OpaKX0chla7Uj98NUtixGL6ejZZV4djhkPxoGLnHPe34i50HklM" as="fetch" type="application/wasm"></head>
 <body>
-    <canvas id="bonauer_quiz_canvas"></canvas>
-    <script type="module">
-        import init, { start } from './bonauer_quiz_lib.js';
-        
-        async function run() {
-            await init();
-            start("bonauer_quiz_canvas");
-        }
-        
-        run().catch(console.error);
-    </script>
+    <div id="app-loading">Loading...</div>
+    <canvas id="canvas"></canvas>
 <script>"use strict";
 
 (function () {
