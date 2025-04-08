@@ -1,0 +1,12 @@
+[build]
+# Point to the index.html file in your web directory
+target = "web/index.html"
+
+
+[serve]
+# The address to serve on
+address = "127.0.0.1"
+port = 8080
+
+[watch]
+watch = ["src/", "web/", "Cargo.toml"]

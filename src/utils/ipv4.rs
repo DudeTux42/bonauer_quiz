@@ -1,5 +1,4 @@
 use crate::models::Question; // Use your existing Question type
-use crate::utils::io::first_and_last_three;
 use crate::utils::random;
 use std::net::Ipv4Addr;
 

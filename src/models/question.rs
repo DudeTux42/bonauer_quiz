@@ -1,22 +1,38 @@
 // Import the necessary traits and modules
-use crate::utils::random;
-use rand::prelude::SliceRandom; // For shuffling the options
-use std::io::{self, Write}; // For handling input and output operations // Import the random module for shuffling
+use crate::utils::random; // For WASM-compatible random functions
+use std::io::Write; // For flushing output
 
-#[derive(Clone)] // Allows the Question struct to be cloned
+#[derive(Clone, Debug)] // Move derive attributes to the struct definition
 pub struct Question {
-    pub question_text: String, // The question text itself
-    pub options: Vec<String>,  // List of options for answers
-    pub correct_answer: usize, // The index of the correct answer in `options`
+    pub question_text: String,       // The question text itself
+    pub options: Vec<String>,        // List of options for answers
+    pub correct_answer: usize,       // The index of the correct answer in `options`
+    pub explanation: Option<String>, // Add explanation field
 }
 
 impl Question {
     /// Creates a new Question with the given text, options, and correct answer index.
     pub fn new(question_text: String, options: Vec<String>, correct_answer: usize) -> Self {
         Question {
-            question_text,  // Assign the given question text
-            options,        // Assign the list of options
-            correct_answer, // Assign the index of the correct answer
+            question_text,     // Assign the given question text
+            options,           // Assign the list of options
+            correct_answer,    // Assign the index of the correct answer
+            explanation: None, // Default to no explanation
+        }
+    }
+
+    /// Creates a new Question with explanation
+    pub fn new_with_explanation(
+        question_text: String,
+        options: Vec<String>,
+        correct_answer: usize,
+        explanation: Option<String>,
+    ) -> Self {
+        Question {
+            question_text,
+            options,
+            correct_answer,
+            explanation,
         }
     }
 
@@ -33,11 +49,11 @@ impl Question {
 
         // Prompt the user for input and flush the output buffer
         print!("Your answer (1-{}): ", self.options.len());
-        io::stdout().flush().unwrap(); // Ensure the prompt is printed before reading input
+        std::io::stdout().flush().unwrap(); // Ensure the prompt is printed before reading input
 
         // Read the user's input
         let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap(); // Read the answer input from the user
+        std::io::stdin().read_line(&mut input).unwrap(); // Read the answer input from the user
 
         // Parse the input and check if it is valid (within the valid range)
         match input.trim().parse::<usize>() {
@@ -73,11 +89,10 @@ impl Question {
 
     /// Shuffles the options and adjusts the `correct_answer` index accordingly.
     pub fn shuffle_options(&mut self) {
-        let mut rng = rand::thread_rng(); // Create a random number generator
         let correct_option = self.options[self.correct_answer].clone(); // Store the correct option
 
-        // Shuffle the options randomly
-        self.options.shuffle(&mut rng);
+        // Shuffle the options using our WASM-compatible random module
+        random::shuffle(&mut self.options);
 
         // Find the new index of the correct option after shuffling
         self.correct_answer = self
@@ -85,5 +100,10 @@ impl Question {
             .iter()
             .position(|option| *option == correct_option) // Find the new position of the correct option
             .unwrap(); // This should always succeed since the correct option is in the list
+    }
+
+    /// Gets the explanation for this question, if any
+    pub fn get_explanation(&self) -> Option<&String> {
+        self.explanation.as_ref()
     }
 }

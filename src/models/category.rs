@@ -19,17 +19,10 @@ impl Category {
         self.questions.push(question);
     }
 
-    // Replace the take_quiz method with a method that uses our random module
     pub fn get_quiz_questions(&self) -> Vec<Question> {
-        // Clone the questions so the original list remains unmodified
         let mut quiz_questions = self.questions.clone();
-
-        // Use our WASM-compatible shuffle
         random::shuffle(&mut quiz_questions);
-
-        // Limit the quiz to 10 questions
         quiz_questions.truncate(10);
-
         quiz_questions
     }
 }

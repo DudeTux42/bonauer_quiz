@@ -37,3 +37,16 @@ pub fn create_sample_quiz() -> Quiz {
 
     quiz
 }
+
+/// Get a list of all category names from a quiz
+pub fn get_categories(quiz: &Quiz) -> Vec<String> {
+    quiz.categories().into_iter().map(String::from).collect()
+}
+
+/// Initialize questions for a specific category
+pub fn get_category_questions(
+    quiz: &Quiz,
+    category_name: &str,
+) -> Vec<crate::models::question::Question> {
+    quiz.initialize_questions(category_name)
+}

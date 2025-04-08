@@ -26,11 +26,6 @@ where
     min + (u64::from_ne_bytes(buffer) % range_size)
 }
 
-/// Generate a random integer in a specified range
-pub fn gen_range_usize(min: usize, max: usize) -> usize {
-    gen_range(min as u64..=max as u64) as usize
-}
-
 /// Shuffle a vector in place using the Fisher-Yates algorithm
 pub fn shuffle<T>(vec: &mut Vec<T>) {
     if vec.is_empty() {
