@@ -6,6 +6,22 @@
 
   <!-- Trunk lädt das Rust-WASM-Modul automatisch -->
   <link data-trunk rel="rust" data-target-name="bonauer_quiz_lib" />
+  
+
+  <script>
+  // Handle GitHub Pages path prefix
+  (function() {
+    const base = document.createElement('base');
+    // This ensures paths work both locally and on GitHub Pages
+    base.href = window.location.pathname.endsWith('/') ? 
+      window.location.pathname : 
+      window.location.pathname + '/';
+    document.head.appendChild(base);
+  })();
+  </script>
+
+
+
 
   <style>
     html, body {
