@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Bonauer Quiz</title>
-    
-    <!-- Specify the library target name explicitly -->
-    <link data-trunk rel="rust" data-target-name="bonauer_quiz_lib" />
-    
-    <style>
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
-        body { background: #f0f0f0; }
-        canvas { width: 100%; height: 100%; }
-    </style>
+  <meta charset="utf-8" />
+  <title>Bonauer Quiz</title>
+
+  <!-- Trunk lädt das Rust-WASM-Modul automatisch -->
+  <link data-trunk rel="rust" data-target-name="bonauer_quiz_lib" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* 💥 Verhindert Scrollbars */
+    }
+
+    body {
+      background: #f0f0f0;
+    }
+
+    canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block; /* verhindert kleine Lücken durch Inline-Element */
+    }
+
+    #app-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div id="app-loading">Loading...</div>
-    <canvas id="canvas"></canvas>
+  <div id="app-loading">Loading...</div>
+  <canvas id="canvas"></canvas>
 </body>
 </html>

@@ -1,8 +1,13 @@
 use crate::data::quiz_data;
 use crate::models::quiz::Quiz;
-use egui;
+use crate::utils::time_utils::{self, duration_from_millis, now};
+// Use the Instant and Duration from the appropriate source
+#[cfg(not(target_arch = "wasm32"))]
 use std::time::{Duration, Instant};
+#[cfg(target_arch = "wasm32")]
+use web_time::{Duration, Instant};
 
+use egui;
 pub struct MyApp {
     quiz: Option<Quiz>,
     current_question: usize,
@@ -74,7 +79,7 @@ impl MyApp {
                     self.show_feedback = false;
                     self.score = 0;
                     self.state = AppState::Playing;
-                    self.start_time = Some(Instant::now());
+                    self.start_time = Some(now());
                     self.elapsed_time = None;
                     self.next_question_requested = false;
                     self.selected_category = Some(category_name.to_string());

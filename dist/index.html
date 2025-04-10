@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Bonauer Quiz</title>
-    
-    <!-- Specify the library target name explicitly -->
-    
+  <meta charset="utf-8" />
+  <title>Bonauer Quiz</title>
+
+  <!-- Trunk lädt das Rust-WASM-Modul automatisch -->
+  
 <script type="module">
-import init, * as bindings from '/bonauer_quiz-deddebebd08e9f4f.js';
-const wasm = await init({ module_or_path: '/bonauer_quiz-deddebebd08e9f4f_bg.wasm' });
+import init, * as bindings from '/bonauer_quiz-ca2f828ece73296.js';
+const wasm = await init({ module_or_path: '/bonauer_quiz-ca2f828ece73296_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -17,16 +17,40 @@ window.wasmBindings = bindings;
 dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 
 </script>
-    
-    <style>
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
-        body { background: #f0f0f0; }
-        canvas { width: 100%; height: 100%; }
-    </style>
-<link rel="modulepreload" href="/bonauer_quiz-deddebebd08e9f4f.js" crossorigin="anonymous" integrity="sha384-JepyzxmimXmAx4IrzRzY/lHvvqx4PfrMS1JPH0Ymh/tOyatTokPRq0UFYAFEthka"><link rel="preload" href="/bonauer_quiz-deddebebd08e9f4f_bg.wasm" crossorigin="anonymous" integrity="sha384-c7awad2QmdcK2OpaKX0chla7Uj98NUtixGL6ejZZV4djhkPxoGLnHPe34i50HklM" as="fetch" type="application/wasm"></head>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* 💥 Verhindert Scrollbars */
+    }
+
+    body {
+      background: #f0f0f0;
+    }
+
+    canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block; /* verhindert kleine Lücken durch Inline-Element */
+    }
+
+    #app-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      color: #333;
+    }
+  </style>
+<link rel="modulepreload" href="/bonauer_quiz-ca2f828ece73296.js" crossorigin="anonymous" integrity="sha384-XXZgrLxscZ4OOA0qWYAXyBIwoyVpCSTNd0fmdgTYPEUBnOoy+t1bZX0C38XjNaWS"><link rel="preload" href="/bonauer_quiz-ca2f828ece73296_bg.wasm" crossorigin="anonymous" integrity="sha384-wlL5cMvmghPj15Or9MjMiynggrqZDpzoeD1b0K45AEj2li8Qa7YZSlHwBA+jhI5c" as="fetch" type="application/wasm"></head>
 <body>
-    <div id="app-loading">Loading...</div>
-    <canvas id="canvas"></canvas>
+  <div id="app-loading">Loading...</div>
+  <canvas id="canvas"></canvas>
 <script>"use strict";
 
 (function () {
